@@ -6,10 +6,13 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import PlanPage from './pages/PlanPage/PlanPage';
 import PlayerPage from './pages/PlayerPage/PlayerPage';
 import WorkoutsPage from './pages/WorkoutsPage/WorkoutsPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import FitnessNavbar from './components/FitnessNavbar/FitnessNavbar';
 
 function App() {
   return (
     <>
+      <FitnessNavbar/>
       <HashRouter>
         <Switch>
           <Route exact path="/"><HomePage/></Route>
