@@ -1,12 +1,25 @@
-.navbar-brand > img {
+.c-fitness-navbar .navbar-brand > img {
     width: 30px;
     margin: 0 7px 3px 0;
 }
 
-.navbar {
-    background-color: #fff;
+
+.c-fitness-navbar .dropdown-menu {
+    top: 120%;
+    border: none;
+    box-shadow: 0 3px 15px #eee;
 }
 
+.c-fitness-navbar .dropdown-item:hover {
+    background: none;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #333;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.c-fitness-navbar .dropdown-item:hover,
 .red-link {
-    color: #fa7470;
+    color: #fb7840;
 }

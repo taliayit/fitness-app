@@ -5,8 +5,8 @@ import './FitnessNavbar.css'
 
 function FitnessNavbar(props) {
     return (
-        <>
-            <Navbar bg="light" expand="lg">
+        <div className="c-fitness-navbar">
+            <Navbar bg="transparent" expand="lg">
                 <Navbar.Brand href="#home"><img src={logo}/>FIT MI</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -23,7 +23,7 @@ function FitnessNavbar(props) {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-        </>
+        </div>
     );
 }
 
