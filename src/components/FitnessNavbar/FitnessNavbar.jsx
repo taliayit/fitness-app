@@ -7,7 +7,7 @@ function FitnessNavbar(props) {
     return (
         <div className="c-fitness-navbar">
             <Navbar bg="transparent" expand="lg">
-                <Navbar.Brand href="#home"><img src={logo}/>FIT MI</Navbar.Brand>
+                <Navbar.Brand href="#home"><img src={logo}/>FIT ME</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
