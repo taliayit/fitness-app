@@ -11,7 +11,7 @@ import FitnessNavbar from './components/FitnessNavbar/FitnessNavbar';
 
 function App() {
   return (
-    <>
+    <div className="App">
       <FitnessNavbar/>
       <HashRouter>
         <Switch>
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/workouts"><WorkoutsPage/></Route>
         </Switch>
       </HashRouter>
-    </>
+    </div>
   );
 }
 
