@@ -8,3 +8,24 @@
 .red-text {
   color: #fa7470;
 }
+
+.red-btn {
+  background-color: #fa7470;
+  color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.red-btn:hover {
+  text-decoration: none;
+  background-color: #df6763;
+  color: #fff;
+}
+
+.bold-text {
+  font-weight: 600;
+}
+
+.bg-img { 
+  width: 100%;
+}

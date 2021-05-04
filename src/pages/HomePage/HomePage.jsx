@@ -13,7 +13,7 @@ function HomePage(props) {
                         <img className="bg-img" src={hompageImage}/>
                     </Col>
                     <Col md={5} className="text-left p-5">
-                        <h1>FIT ME<span className="red-text">.</span></h1>
+                        <h1 className="bold-text">FIT ME<span className="red-text">.</span></h1>
                         <h3>Workouts Customization</h3>
                         <p className="app-desc">Select your personal training preferences, start workout and save your favorite workouts.</p>
                         <Link to="/login" className="red-btn">Let's Do Fit</Link>
