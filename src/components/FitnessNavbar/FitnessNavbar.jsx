@@ -19,7 +19,7 @@ function FitnessNavbar(props) {
                     </Nav>
                     <Nav className="ml-auto">
                         <Nav.Link href="#customize">Try it out</Nav.Link>
-                        <Nav.Link href="#login"><span className="red-link">Sign in</span></Nav.Link>
+                        <Nav.Link href="#login"><span className="red-text">Sign in</span></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

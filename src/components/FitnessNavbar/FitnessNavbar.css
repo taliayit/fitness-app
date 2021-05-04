@@ -13,20 +13,21 @@
 }
 
 .c-fitness-navbar .dropdown-menu {
+    top: 120%;
     border: none;
-    box-shadow: 0 3px 15px #eee;
+    border-radius: 0;
+    box-shadow: 0 3px 15px #777;
 }
 
 .c-fitness-navbar .dropdown-item:hover {
     background: none;
 }
 
-.navbar-light .navbar-nav .nav-link, .red-link:hover {
+.navbar-light .navbar-nav .nav-link, .navbar .red-text:hover {
     color: #333;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
-.c-fitness-navbar .dropdown-item:hover,
-.red-link {
-    color: #fb7840;
+.c-fitness-navbar .dropdown-item:hover {
+    color: #fa7470;
 }
