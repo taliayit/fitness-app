@@ -1,3 +1,27 @@
-/* .p-homepage .bg-img { 
-    width: 100%;
-} */
+.p-loginpage .login-content {
+    margin: 0 auto;
+    max-width: 380px;
+}
+
+.p-loginpage .login-content > p {
+    border-top: 1px solid #c7c7c7;
+    margin: 30px 0;
+    padding: 20px 0;
+}
+
+.p-loginpage .login-content .form-group {
+    margin: 20px 0;
+}
+
+.p-loginpage .login-content .form-control {
+    padding: 25px;
+}
+
+.p-loginpage .login-content .form-control:focus {
+    border-color: #c7c7c7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px #c7c7c7;
+  }
+
+.btn-primary:focus {
+    box-shadow: none !important;
+}

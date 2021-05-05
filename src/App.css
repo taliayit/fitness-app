@@ -9,14 +9,16 @@
   color: #fa7470;
 }
 
-.red-btn {
+#red-btn {
   background-color: #fa7470;
   color: #fff;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 3px;
+  border: none;
+  font-size: 1.25rem;
 }
 
-.red-btn:hover {
+#red-btn:hover {
   text-decoration: none;
   background-color: #df6763;
   color: #fff;
