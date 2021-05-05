@@ -9,7 +9,7 @@ function FitnessNavbar({activeUser}) {
     return (
         <div className="c-fitness-navbar">
             <Navbar bg="transparent" expand="lg">
-                <Navbar.Brand href="#home" className="bold-text"><img src={logo}/>FIT ME</Navbar.Brand>
+                <Navbar.Brand href="#/" className="bold-text"><img src={logo}/>FIT ME</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -21,7 +21,7 @@ function FitnessNavbar({activeUser}) {
                     </Nav>
                     <Nav className="ml-auto">
                         {!activeUser ? <Nav.Link href="#customize">Try it out</Nav.Link> : null}
-                        <Nav.Link href="#login"><span className="red-text">Sign {activeUser ? 'out' : 'in'}</span></Nav.Link>
+                        <Nav.Link href="#login"><span className="red-link">Sign {activeUser ? 'out' : 'in'}</span></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

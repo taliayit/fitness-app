@@ -5,8 +5,14 @@
   text-align: center;
 }
 
-.red-text {
+.red-text, .red-link {
   color: #fa7470;
+}
+
+.red-link:hover {
+  color: #df6763;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #red-btn {

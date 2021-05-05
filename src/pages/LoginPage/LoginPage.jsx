@@ -5,6 +5,7 @@ import loginImage from '../../assets/images/login_bg.jpg';
 import './LoginPage.css';
 
 function LoginPage({isSignup}) {
+    const [signupMode, setSignupMode] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
@@ -24,34 +25,45 @@ function LoginPage({isSignup}) {
                     </Col>
                     <Col md={5} className="text-left p-5">
                         <div className="login-content">
-                            <h2 className="bold-text">Sign in</h2>
+                            <h2 className="bold-text">Sign {signupMode ? "up" : "in"}</h2>
                             <Form onSubmit={login}>
                                 <Form.Group size="lg" controlId="email">
-                                <Form.Control
-                                    type="email"
-                                    value={email}
-                                    placeholder="Email"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                </Form.Group>
-                                <Form.Group size="lg" controlId="password">
-                                <Form.Control
-                                    type="password"
-                                    value={password}
-                                    placeholder="Password"
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-                                </Form.Group>
-                                <Form.Group controlId="rememberMeCheckbox">
-                                <Form.Check type="checkbox" label="Keep me signed in" />
+                                    <Form.Control
+                                        type="email"
+                                        value={email}
+                                        placeholder="Email"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
                                 </Form.Group>
 
+                                <Form.Group size="lg" controlId="password">
+                                    <Form.Control
+                                        type="password"
+                                        value={password}
+                                        placeholder="Password"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </Form.Group>
+
+                                {signupMode ? <Form.Group size="lg" controlId="password">
+                                    <Form.Control
+                                        type="password"
+                                        value={password}
+                                        placeholder="Confirm Password"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </Form.Group> :null}
+
+                                {!signupMode ? <Form.Group controlId="rememberMeCheckbox">
+                                    <Form.Check type="checkbox" label="Keep me signed in"/>
+                                </Form.Group> : null}
+
                                 <Button id="red-btn" block type="submit">
-                                Sign in
+                                Sign {signupMode ? "up" : "in"}
                                 </Button>
                             </Form>
 
-                            <p>Don't have an account? <a className="red-text" href="">Sign up</a></p>
+                            <p>{signupMode ? "Already" : "Don't"} have an account? <span className="red-link" onClick={()=>setSignupMode(!signupMode)}>Sign {signupMode ? 'in' : 'up'}</span></p>
 
                         </div>
                     </Col>
