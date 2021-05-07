@@ -1,6 +1,12 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
-function CustomizePage(props) {
+function CustomizePage({activeUser}) {
+
+    if (!activeUser) {
+        return <Redirect to="/"/>
+    }
+    
     return (
         <div>
             CustomizePage
