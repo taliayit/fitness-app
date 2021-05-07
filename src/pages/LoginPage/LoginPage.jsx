@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import loginImage from '../../assets/images/login_bg.jpg';
-import UserModel from '../../model/User/User';
+import UserModel from '../../model/User/UserModel';
 import './LoginPage.css';
 
 function LoginPage(props) {
