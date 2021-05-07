@@ -2,18 +2,52 @@ import React from 'react';
 import { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import loginImage from '../../assets/images/login_bg.jpg';
+import UserModel from '../../model/User/User';
 import './LoginPage.css';
 
-function LoginPage({isSignup}) {
+function LoginPage(props) {
     const [signupMode, setSignupMode] = useState(false);
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-  
+    const [password1, setPassword1] = useState("");
+    const [password2, setPassword2] = useState("");
+
     function validateForm() {
+        if(email === '') {
+            return false;
+        }
+        else if(password1 === '') {
+            return false;
+        }
+        if(signupMode) {
+            if(password2 === '') {
+                return false;
+            }    
+            else if(password1 != password2) {
+                return false;
+            }    
+        }
+        return true;
     }
-  
-    function login(event) {
-      event.preventDefault();
+
+    async function signup(e) {
+        e.preventDefault();
+
+        if(validateForm()) {
+            const activeUser = await UserModel.signup(email, password1);
+            // TODO: update activeUser
+        }
+    }
+
+    async function login(e) {
+        e.preventDefault();
+        
+        try {
+            const activeUser = await UserModel.login(email, password1);
+            // TODO: update activeUser
+        } catch (error) {
+            console.error('Error while logging in user', error);
+            // TODO: show error message
+        }
     }  
 
     return (
@@ -26,7 +60,7 @@ function LoginPage({isSignup}) {
                     <Col md={5} className="text-left p-5">
                         <div className="login-content">
                             <h2 className="bold-text">Sign {signupMode ? "up" : "in"}</h2>
-                            <Form onSubmit={login}>
+                            <Form onSubmit={signupMode ? signup : login}>
                                 <Form.Group size="lg" controlId="email">
                                     <Form.Control
                                         type="email"
@@ -36,21 +70,21 @@ function LoginPage({isSignup}) {
                                     />
                                 </Form.Group>
 
-                                <Form.Group size="lg" controlId="password">
+                                <Form.Group size="lg" controlId="password1">
                                     <Form.Control
                                         type="password"
-                                        value={password}
+                                        value={password1}
                                         placeholder="Password"
-                                        onChange={(e) => setPassword(e.target.value)}
+                                        onChange={(e) => setPassword1(e.target.value)}
                                     />
                                 </Form.Group>
 
-                                {signupMode ? <Form.Group size="lg" controlId="password">
+                                {signupMode ? <Form.Group size="lg" controlId="password2">
                                     <Form.Control
                                         type="password"
-                                        value={password}
+                                        value={password2}
                                         placeholder="Confirm Password"
-                                        onChange={(e) => setPassword(e.target.value)}
+                                        onChange={(e) => setPassword2(e.target.value)}
                                     />
                                 </Form.Group> :null}
 
@@ -63,7 +97,9 @@ function LoginPage({isSignup}) {
                                 </Button>
                             </Form>
 
-                            <p>{signupMode ? "Already" : "Don't"} have an account? <span className="red-link" onClick={()=>setSignupMode(!signupMode)}>Sign {signupMode ? 'in' : 'up'}</span></p>
+                            <p>{signupMode ? "Already" : "Don't"} have an account?
+                                <span className="red-link" onClick={()=>setSignupMode(!signupMode)}> Sign {signupMode ? 'in' : 'up'}</span>
+                            </p>
 
                         </div>
                     </Col>
