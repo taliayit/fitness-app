@@ -1,15 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import loginImage from '../../assets/images/login_bg.jpg';
 import UserModel from '../../model/User/UserModel';
 import './LoginPage.css';
 
-function LoginPage(props) {
+function LoginPage({activeUser, onLogin}) {
     const [signupMode, setSignupMode] = useState(false);
     const [email, setEmail] = useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
+
+    if (activeUser) {
+        return <Redirect to="/customize"/>
+    }
 
     function validateForm() {
         if(email === '') {
@@ -22,7 +27,7 @@ function LoginPage(props) {
             if(password2 === '') {
                 return false;
             }    
-            else if(password1 != password2) {
+            else if(password1 !== password2) {
                 return false;
             }    
         }
@@ -34,7 +39,7 @@ function LoginPage(props) {
 
         if(validateForm()) {
             const activeUser = await UserModel.signup(email, password1);
-            // TODO: update activeUser
+            onLogin(activeUser);
         }
     }
 
@@ -43,7 +48,7 @@ function LoginPage(props) {
         
         try {
             const activeUser = await UserModel.login(email, password1);
-            // TODO: update activeUser
+            onLogin(activeUser);
         } catch (error) {
             console.error('Error while logging in user', error);
             // TODO: show error message
@@ -55,7 +60,7 @@ function LoginPage(props) {
             <Container fluid>
                 <Row>
                     <Col md={7} className="p-0">
-                        <img className="bg-img" src={loginImage}/>
+                        <img className="bg-img" src={loginImage} alt="workout"/>
                     </Col>
                     <Col md={5} className="text-left p-5">
                         <div className="login-content">

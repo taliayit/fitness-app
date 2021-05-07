@@ -26,4 +26,15 @@ export default class UserModel {
         UserModel.activeUser = new UserModel(parseUser);
         return UserModel.activeUser;
     }
+
+    static loadActiveUser() {
+        UserModel.activeUser = Parse.User.current() ? new UserModel(Parse.User.current()) : null;
+        return UserModel.activeUser;
+    }
+
+    static logout() {
+        UserModel.activeUser = null;
+        Parse.User.logOut();
+    }
+
 }

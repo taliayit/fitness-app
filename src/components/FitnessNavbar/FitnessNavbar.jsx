@@ -3,7 +3,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import logo from '../../assets/images/logo_red.png';
 import './FitnessNavbar.css'
 
-function FitnessNavbar({activeUser}) {
+function FitnessNavbar({activeUser, onLogout}) {
     // activeUser = true; // for debugging purposes
 
     return (
@@ -21,7 +21,8 @@ function FitnessNavbar({activeUser}) {
                     </Nav>
                     <Nav className="ml-auto">
                         {!activeUser ? <Nav.Link href="#customize">Try it out</Nav.Link> : null}
-                        <Nav.Link href="#login"><span className="red-link">Sign {activeUser ? 'out' : 'in'}</span></Nav.Link>
+                        {!activeUser ? <Nav.Link href="#login"><span className="red-link">Sign in</span></Nav.Link> : null}
+                        {activeUser ? <Nav.Link href="#" onClick={onLogout}><span className="red-link">Sign out</span></Nav.Link> : null}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -8,15 +8,24 @@ import PlayerPage from './pages/PlayerPage/PlayerPage';
 import WorkoutsPage from './pages/WorkoutsPage/WorkoutsPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FitnessNavbar from './components/FitnessNavbar/FitnessNavbar';
+import UserModel from './model/User/UserModel';
+import { useState } from 'react';
 
 function App() {
+  const [activeUser, setActiveUser] = useState(UserModel.loadActiveUser());
+  
+  function handleLogout() {
+    setActiveUser(null);
+    UserModel.logout();
+  }
+
   return (
     <div className="App">
-      <FitnessNavbar/>
+      <FitnessNavbar activeUser={activeUser} onLogout={handleLogout}/>
       <HashRouter>
         <Switch>
           <Route exact path="/"><HomePage/></Route>
-          <Route exact path="/login"><LoginPage/></Route>
+          <Route exact path="/login"><LoginPage activeUser={activeUser} onLogin={user => setActiveUser(user)}/></Route>
           <Route exact path="/customize"><CustomizePage/></Route>
           <Route exact path="/plan"><PlanPage/></Route>
           <Route exact path="/player"><PlayerPage/></Route>
