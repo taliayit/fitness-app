@@ -13,7 +13,6 @@ import { useState } from 'react';
 
 function App() {
   const [activeUser, setActiveUser] = useState(UserModel.loadActiveUser());
-  console.log(activeUser);
 
   function handleLogout() {
     setActiveUser(null);

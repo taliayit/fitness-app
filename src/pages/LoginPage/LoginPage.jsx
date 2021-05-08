@@ -11,6 +11,7 @@ function LoginPage({activeUser, onLogin}) {
     const [email, setEmail] = useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     if (activeUser) {
         return <Redirect to="/customize"/>
@@ -18,16 +19,20 @@ function LoginPage({activeUser, onLogin}) {
 
     function validateForm() {
         if(email === '') {
+            setErrorMessage('Email cannot be empty.');
             return false;
         }
         else if(password1 === '') {
+            setErrorMessage('Password cannot be empty.');
             return false;
         }
         if(signupMode) {
             if(password2 === '') {
+                setErrorMessage('Password cannot be empty.');
                 return false;
             }    
             else if(password1 !== password2) {
+                setErrorMessage('Passwords do not match.');
                 return false;
             }    
         }
@@ -38,20 +43,27 @@ function LoginPage({activeUser, onLogin}) {
         e.preventDefault();
 
         if(validateForm()) {
-            const activeUser = await UserModel.signup(email, password1);
-            onLogin(activeUser);
+            try {
+                const activeUser = await UserModel.signup(email, password1);
+                onLogin(activeUser);
+            } catch (error) {
+                console.error('Error while signing up user', error);
+                setErrorMessage(error.message)
+            }
         }
     }
 
     async function login(e) {
         e.preventDefault();
         
-        try {
-            const activeUser = await UserModel.login(email, password1);
-            onLogin(activeUser);
-        } catch (error) {
-            console.error('Error while logging in user', error);
-            // TODO: show error message
+        if(validateForm()) {
+            try {
+                const activeUser = await UserModel.login(email, password1);
+                onLogin(activeUser);
+            } catch (error) {
+                console.error('Error while logging in user', error);
+                setErrorMessage(error.message)
+            }
         }
     }  
 
@@ -93,6 +105,8 @@ function LoginPage({activeUser, onLogin}) {
                                     />
                                 </Form.Group> :null}
 
+                                {errorMessage && (<div className="error-wrapper"><span className="error-icon">!</span><p className="error-msg"> {errorMessage} </p></div>)}
+
                                 {!signupMode ? <Form.Group controlId="rememberMeCheckbox">
                                     <Form.Check type="checkbox" label="Keep me signed in"/>
                                 </Form.Group> : null}
@@ -101,6 +115,8 @@ function LoginPage({activeUser, onLogin}) {
                                 Sign {signupMode ? "up" : "in"}
                                 </Button>
                             </Form>
+                            
+                            <div className="seperator"></div>
 
                             <p>{signupMode ? "Already" : "Don't"} have an account?
                                 <span className="red-link" onClick={()=>setSignupMode(!signupMode)}> Sign {signupMode ? 'in' : 'up'}</span>
