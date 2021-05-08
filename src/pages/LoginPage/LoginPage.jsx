@@ -67,6 +67,18 @@ function LoginPage({activeUser, onLogin}) {
         }
     }  
 
+    function clearForm() {
+        setEmail("");
+        setPassword1("");
+        setPassword2("");
+        setErrorMessage("");
+    }
+
+    function changeLoginMode() {
+        clearForm();
+        setSignupMode(!signupMode);
+    }
+
     return (
         <div className="p-loginpage">
             <Container fluid>
@@ -119,7 +131,7 @@ function LoginPage({activeUser, onLogin}) {
                             <div className="seperator"></div>
 
                             <p>{signupMode ? "Already" : "Don't"} have an account?
-                                <span className="red-link" onClick={()=>setSignupMode(!signupMode)}> Sign {signupMode ? 'in' : 'up'}</span>
+                                <span className="red-link" onClick={changeLoginMode}> Sign {signupMode ? 'in' : 'up'}</span>
                             </p>
 
                         </div>
