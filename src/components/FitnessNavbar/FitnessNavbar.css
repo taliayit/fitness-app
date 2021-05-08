@@ -8,11 +8,20 @@
     margin: 0 7px 3px 0;
 }
 
-.c-fitness-navbar .dropdown-menu {
-    top: 120%;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 3px 15px #777;
+@media (min-width: 992px) {
+    .c-fitness-navbar .dropdown-menu {
+        top: 120%;
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 3px 15px #ccc;
+    }
+}
+
+@media (max-width: 992px) {
+    .c-fitness-navbar .dropdown-menu {
+        text-align: center;
+        border: none;
+    }
 }
 
 .c-fitness-navbar .dropdown-item:hover {
