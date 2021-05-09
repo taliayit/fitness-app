@@ -21,6 +21,10 @@
     margin-right: 15px;
 }
 
+.p-customize [class^="logo"]:hover {
+    cursor: pointer;
+}
+
 .p-customize .time-wrapper {
     margin: 10px 0 30px 0;
 }
@@ -31,7 +35,7 @@
 }
 
 .p-customize .left-col {
-    padding: 30px 0;
+    padding: 30px;
     text-align: left;
     display: flex;
     flex-direction: column;
