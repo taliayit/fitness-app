@@ -1,0 +1,22 @@
+.p-customize .level-img-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 30px 0;
+}
+
+.p-customize .logo-sm {
+    width: 30px;
+}
+
+.p-customize .logo-md {
+    width: 50px;
+}
+
+.p-customize .logo-lg {
+    width: 70px;
+}
+
+.p-customize [class^="logo"] {
+    height: min-content;
+    margin-right: 15px;
+}

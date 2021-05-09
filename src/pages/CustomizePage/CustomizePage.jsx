@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import logo from '../../assets/images/logo_black.png';
+import './CustomizePage.css';
 
 function CustomizePage({activeUser}) {
 
@@ -15,10 +17,10 @@ function CustomizePage({activeUser}) {
                 <Row>
                     <Col className="p-5 text-left">
                         <h4>Level</h4>
-                        <div className="display-flex">
-                            <img src="" alt=""/>
-                            <img src="" alt=""/>
-                            <img src="" alt=""/>
+                        <div className="level-img-wrapper">
+                            <img className="logo-sm" src={logo} alt=""/>
+                            <img className="logo-md" src={logo} alt=""/>
+                            <img className="logo-lg" src={logo} alt=""/>
                         </div>
 
                         <h4>Time</h4>
