@@ -42,7 +42,7 @@ function CustomizePage({activeUser}) {
                         </Button>
                     </Col>
                     <Col>
-                        {/* <MusclesSelector/> */}
+                        <MusclesSelector/>
                     </Col>
                 </Row>
             </Container>
