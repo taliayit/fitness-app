@@ -20,3 +20,20 @@
     height: min-content;
     margin-right: 15px;
 }
+
+.p-customize .time-wrapper {
+    margin: 10px 0 30px 0;
+}
+
+.p-customize .time-format {
+    font-size: small;
+    margin-left: 10px;
+}
+
+.p-customize .left-col {
+    padding: 30px 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+}
