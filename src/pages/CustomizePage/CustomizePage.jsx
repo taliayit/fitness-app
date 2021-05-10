@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import logo_black from '../../assets/images/logo_black.png';
 import logo_red from '../../assets/images/logo_red.png';
 import MusclesSelector from '../../components/MusclesSelector/MusclesSelector';
 import TimePicker from '../../components/TimePicker/TimePicker';
 import './CustomizePage.css';
 
-function CustomizePage({activeUser}) {
+function CustomizePage({activeUser, onSubmit}) {
     const [level, setLevel] = useState(0);
     const [time, setTime] = useState(0);
     const [muscles, setMuscles] = useState([]);
@@ -16,10 +16,6 @@ function CustomizePage({activeUser}) {
         return <Redirect to="/"/>
     }
     
-    function submitCustomization() {
-        // activeUser.createWorkout(level, time, muscles);
-    }
-
     return (
         <div className="p-customize">
             <Container>
@@ -42,9 +38,13 @@ function CustomizePage({activeUser}) {
                         <h4 className="bold-text">Muscles</h4>
                         <p>Select body areas on the right</p>
 
-                        <Button id="red-btn" className="mt-auto m-0" onClick={submitCustomization}>
-                           Lets Start
-                        </Button>
+                        <Link 
+                            to="/plan" 
+                            id="red-btn"
+                            onClick={() => onSubmit({level: level, time: time, muscles: muscles})}>
+                            Let's Start
+                        </Link>
+
                     </Col>
                     <Col className="p-0">
                         <MusclesSelector onMusclesSelected={setMuscles}/>

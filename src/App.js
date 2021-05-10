@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 function App() {
   const [activeUser, setActiveUser] = useState(UserModel.loadActiveUser());
+  const [preferences, setPreferences] = useState(null);
 
   function handleLogout() {
     setActiveUser(null);
@@ -26,8 +27,8 @@ function App() {
         <Switch>
           <Route exact path="/"><HomePage/></Route>
           <Route exact path="/login"><LoginPage activeUser={activeUser} onLogin={user => setActiveUser(user)}/></Route>
-          <Route exact path="/customize"><CustomizePage activeUser={activeUser}/></Route>
-          <Route exact path="/plan"><PlanPage/></Route>
+          <Route exact path="/customize"><CustomizePage activeUser={activeUser} onSubmit={setPreferences}/></Route>
+          <Route exact path="/plan"><PlanPage preferences={preferences}/></Route>
           <Route exact path="/player"><PlayerPage/></Route>
           <Route exact path="/workouts"><WorkoutsPage/></Route>
         </Switch>

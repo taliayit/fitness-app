@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 
-function PlanPage(props) {
+function PlanPage({preferences}) {
+
+    useEffect(() => {
+        console.log(preferences);
+    }, []);
+
+    if (!preferences) {
+        return <Redirect to="/"/>
+    }
+
     return (
         <div>
-            PlanPage
+            
         </div>
     );
 }
