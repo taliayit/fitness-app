@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
 import ImageMapper from 'react-image-mapper';
 import bodyImg from '../../assets/images/body_sm.png';
 import './MusclesSelector.css'
 
-function MusclesSelector(props) {
+function MusclesSelector({onMusclesSelected}) {
     const images = require.context('../../assets/images/muscles', true);
     const [selectedMuscles, setSelectedMuscles] = useState([]);
     const [hoveredArea, setHoveredArea] = useState("");
+
+    useEffect(() => {
+        onMusclesSelected(selectedMuscles)
+    }, [selectedMuscles]);
 
     const areasMap = { 
         name: "body-map",
@@ -59,7 +63,6 @@ function MusclesSelector(props) {
     }
 
     function clickArea(area) {
-
         if(selectedMuscles.includes(area.name)) {
             setSelectedMuscles(selectedMuscles.filter(val => val !== area.name));
         }

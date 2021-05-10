@@ -8,13 +8,18 @@ import TimePicker from '../../components/TimePicker/TimePicker';
 import './CustomizePage.css';
 
 function CustomizePage({activeUser}) {
-    const [time, setTime] = useState('00:00');
     const [level, setLevel] = useState(0);
+    const [time, setTime] = useState(0);
+    const [muscles, setMuscles] = useState([]);
 
     if (!activeUser) {
         return <Redirect to="/"/>
     }
     
+    function submitCustomization() {
+        // activeUser.createWorkout(level, time, muscles);
+    }
+
     return (
         <div className="p-customize">
             <Container>
@@ -37,12 +42,12 @@ function CustomizePage({activeUser}) {
                         <h4 className="bold-text">Muscles</h4>
                         <p>Select body areas on the right</p>
 
-                        <Button id="red-btn" className="mt-auto m-0" onClick={() => {}}>
+                        <Button id="red-btn" className="mt-auto m-0" onClick={submitCustomization}>
                            Lets Start
                         </Button>
                     </Col>
                     <Col className="p-0">
-                        <MusclesSelector/>
+                        <MusclesSelector onMusclesSelected={setMuscles}/>
                     </Col>
                 </Row>
             </Container>
