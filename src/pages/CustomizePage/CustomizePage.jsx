@@ -31,13 +31,13 @@ function CustomizePage({activeUser}) {
                         <h4 className="bold-text">Time<span className="time-format">(HH : mm)</span></h4>
                         
                         <div className="time-wrapper">
-                            <TimePicker/>
+                            <TimePicker onTimePicked={setTime}/>
                         </div>
 
                         <h4 className="bold-text">Muscles</h4>
                         <p>Select body areas on the right</p>
 
-                        <Button id="red-btn" className="mt-auto m-0">
+                        <Button id="red-btn" className="mt-auto m-0" onClick={() => {}}>
                            Lets Start
                         </Button>
                     </Col>

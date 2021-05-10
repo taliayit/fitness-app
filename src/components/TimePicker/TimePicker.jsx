@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TimePicker.css';
 
-function TimePicker(props) {
+function TimePicker({onTimePicked}) {
     const [ltime, setLtime] = useState('00');
     const [rtime, setRtime] = useState('00');
 
@@ -14,8 +14,11 @@ function TimePicker(props) {
         else if(lvalue.length === 3)
             lvalue = lvalue.substring(1);
         
-        if(lvalue <= 2)
+        if(lvalue <= 2) {
             setLtime(lvalue);
+            onTimePicked(lvalue*60 + parseInt(rtime));
+        }
+            
     }
 
     function onRtimeChange(e) {
@@ -27,8 +30,11 @@ function TimePicker(props) {
         else if(rvalue.length === 3)
             rvalue = rvalue.substring(1);
         
-        if(rvalue <= 59)
+        if(rvalue <= 59) {
             setRtime(rvalue);
+            onTimePicked(ltime*60 + parseInt(rvalue));
+        }
+            
     }
 
     return (
