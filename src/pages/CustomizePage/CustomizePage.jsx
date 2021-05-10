@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Redirect, Link } from 'react-router-dom';
 import logo_black from '../../assets/images/logo_black.png';
 import logo_red from '../../assets/images/logo_red.png';
@@ -48,7 +48,7 @@ function CustomizePage({activeUser, onSubmit}) {
 
                         <h4 className="bold-text">Muscles</h4>
                         <div className="muscles-wrapper">
-                            <p>Select body areas on the right</p>
+                            <p>Select body areas</p>
                         </div>
                         
                         {errorMessage && (<div className="error-wrapper"><span className="error-icon">!</span><p className="error-msg"> {errorMessage} </p></div>)}
@@ -60,6 +60,7 @@ function CustomizePage({activeUser, onSubmit}) {
                             Let's Start
                         </Link>
                         : <Link 
+                            to="/plan"
                             id="red-btn"
                             onClick={e => handleInvalidSubmit(e)}>
                             Let's Start
