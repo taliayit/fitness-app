@@ -1,16 +1,17 @@
-#body-area {
-    position: relative;
-    background-size: contain;
+[id^="area-"] {
+    position: absolute;
+    left: 0;
     width: 600px;
-    height: 600px;
     /* z-index: 2; */
 }
 
-.c-muscle-selector>div {
+.c-muscle-selector > div {
     position: absolute !important;
 }
 
-.c-muscle-selector img {
+.c-muscle-selector > div > img {
     position: relative;
+    top: 0;
+    left: 0;
     opacity: 0.5;
 }

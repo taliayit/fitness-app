@@ -41,7 +41,7 @@ function CustomizePage({activeUser}) {
                            Lets Start
                         </Button>
                     </Col>
-                    <Col>
+                    <Col className="p-0">
                         <MusclesSelector/>
                     </Col>
                 </Row>

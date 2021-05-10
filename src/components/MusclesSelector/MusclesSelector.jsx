@@ -6,9 +6,10 @@ import './MusclesSelector.css'
 
 function MusclesSelector(props) {
     const images = require.context('../../assets/images/muscles', true);
-    const [img, setImg ] = useState('');
-    const IMAGE_URL = bodyImg;
-    const AREAS_MAP = { 
+    const [selectedMuscles, setSelectedMuscles] = useState([]);
+    const [hoveredArea, setHoveredArea] = useState("");
+
+    const areasMap = { 
         name: "body-map",
         areas: [
             {name: "4", shape:"poly", coords: [118,124,144,131,157,130,177,123,184,128,199,161,169,173,155,169,147,176,140,171,128,174,98,159]},
@@ -49,13 +50,22 @@ function MusclesSelector(props) {
         ]
     }
     function enterArea(area) {
-        console.log("enter")
-        setImg(images(`./${area.name}.png`).default)
+        setHoveredArea(images(`./${area.name}.png`).default);
     }
 
     function leaveArea(area) {
-        console.log("leave")
-        setImg('');
+        if(!selectedMuscles.includes(area.name))
+            setHoveredArea('');
+    }
+
+    function clickArea(area) {
+
+        if(selectedMuscles.includes(area.name)) {
+            setSelectedMuscles(selectedMuscles.filter(val => val !== area.name));
+        }
+        else {
+            setSelectedMuscles(selectedMuscles.concat(area.name));
+        }
     }
 
     return (
@@ -63,13 +73,30 @@ function MusclesSelector(props) {
             <div className="c-muscle-selector">
 
                 <ImageMapper
-                    src={IMAGE_URL}
-                    map={AREAS_MAP}
+                    src={bodyImg}
+                    map={areasMap}
                     active={false}
                     onMouseEnter={area => enterArea(area)}
                     onMouseLeave={area => leaveArea(area)}
+                    onClick={clickArea}
                 />
-                <div id="body-area" style={{backgroundImage: `url(${img})`}}></div>
+                
+                {selectedMuscles.includes("1") ? <img id="area-1" src={images('./1.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("2") ? <img id="area-2" src={images('./2.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("3") ? <img id="area-3" src={images('./3.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("4") ? <img id="area-4" src={images('./4.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("5") ? <img id="area-5" src={images('./5.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("6") ? <img id="area-6" src={images('./6.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("7") ? <img id="area-7" src={images('./7.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("8") ? <img id="area-8" src={images('./8.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("9") ? <img id="area-9" src={images('./9.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("10") ? <img id="area-10" src={images('./10.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("11") ? <img id="area-11" src={images('./11.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("12") ? <img id="area-12" src={images('./12.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("13") ? <img id="area-13" src={images('./13.png').default} alt="muscle"/> : null}
+                {selectedMuscles.includes("14") ? <img id="area-14" src={images('./14.png').default} alt="muscle"/> : null}
+
+                {hoveredArea ? <img id="area-hovered" src={hoveredArea} alt="muscle"/> : null}
 
             </div>
         </>
