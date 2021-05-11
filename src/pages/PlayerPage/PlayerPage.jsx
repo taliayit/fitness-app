@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 import CountDownTimer from '../../components/CountDownTimer/CountDownTimer';
+import { FaPlay, FaPause } from 'react-icons/fa';
 import './PlayerPage.css';
 
 function PlayerPage({level, exercises}) {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const [curruntIndex, setCurruntIndex] = useState(0);
 
     level = 2; //for debugging
@@ -24,14 +24,14 @@ function PlayerPage({level, exercises}) {
 
     return (
         <div className="p-player-page">
-            <Button onClick={() => setIsPlaying(!isPlaying)}>Start</Button>
             <div className="player-dashboard">
                 <div className="player-info">
                     <h3 className="bold-text">{exercises[curruntIndex].name}</h3>
                     <span className="bold-text">Next: </span>
                     <span>{(curruntIndex + 1 < exercises.length) ? exercises[curruntIndex+1].name : 'Workout Complete!'}</span>
                     <div className="player-buttons">
-                        {/* play + pause buttons */}
+                        <FaPlay onClick={() => setIsPlaying(true)}/>
+                        <FaPause onClick={() => setIsPlaying(false)}/>
                     </div>
                 </div>
                 <div className="timer-wrapper">

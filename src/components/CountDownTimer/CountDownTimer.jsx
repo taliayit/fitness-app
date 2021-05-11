@@ -53,7 +53,7 @@ function CountDownTimer({isPlaying, level, onExerciseComplete}) {
                     setDuration(isRestTime ? activeTime : restTime);
                     setIsRestTime(!isRestTime);
                     setKey(prevKey => prevKey + 1);
-                    if(isRestTime)
+                    if(isRestTime && key !== 0)
                         onExerciseComplete();
                     return [true, 1000]}
                 }
