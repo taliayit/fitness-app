@@ -5,3 +5,19 @@
 .p-player-page .timer-wrapper .value {
     font-size: x-large;
 }
+
+.p-player-page .player-dashboard {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.p-player-page .player-info {
+    text-align: left;
+    font-size: larger;
+}

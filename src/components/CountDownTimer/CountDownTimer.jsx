@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-function CountDownTimer({isPlaying, level}) {
+function CountDownTimer({isPlaying, level, onExerciseComplete}) {
     const [isRestTime, setIsRestTime] = useState(true);
     const [duration, setDuration] = useState(3);
     const [key, setKey] = useState(0);
@@ -46,13 +46,15 @@ function CountDownTimer({isPlaying, level}) {
                 key={key}
                 isPlaying={isPlaying}
                 duration={duration}
-                size={120}
-                strokeWidth={8}
+                size={110}
+                strokeWidth={7}
                 colors={[["#ff8e8a", 0.33], ["#fa7470", 0.33], ["#df6763"]]}
                 onComplete={() => {
                     setDuration(isRestTime ? activeTime : restTime);
                     setIsRestTime(!isRestTime);
                     setKey(prevKey => prevKey + 1);
+                    if(isRestTime)
+                        onExerciseComplete();
                     return [true, 1000]}
                 }
                 >
