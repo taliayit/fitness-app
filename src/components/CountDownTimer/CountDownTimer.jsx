@@ -2,12 +2,36 @@ import React, { useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 function CountDownTimer({isPlaying, level}) {
+    const [isRestTime, setIsRestTime] = useState(true);
+    const [duration, setDuration] = useState(3);
+    const [key, setKey] = useState(0);
+
+    let activeTime;
+    let restTime;
+
+    setTimes();
+    // useEffect(() => {
+    //     setTimes();
+    // }, []);
+
+    function setTimes() {
+        switch(level) {
+            case 1: 
+                activeTime = 30;
+                restTime = 30;
+                break;
+            case 2: 
+                activeTime = 40;
+                restTime = 20;
+                break;
+            case 3: 
+                activeTime = 50;
+                restTime = 10;
+                break;
+        }
+    }
     
-    const renderTime = ({ remainingTime }) => {
-        // if (remainingTime === 0) {
-        //   return <div className="timer">Too lale...</div>;
-        // }
-      
+    const renderTime = ({ remainingTime }) => {      
         return (
           <div className="timer">
             <div className="value">{remainingTime}</div>
@@ -19,12 +43,16 @@ function CountDownTimer({isPlaying, level}) {
     return (
         <div>
             <CountdownCircleTimer
+                key={key}
                 isPlaying={isPlaying}
-                duration={10}
+                duration={duration}
                 size={120}
                 strokeWidth={8}
                 colors={[["#ff8e8a", 0.33], ["#fa7470", 0.33], ["#df6763"]]}
                 onComplete={() => {
+                    setDuration(isRestTime ? activeTime : restTime);
+                    setIsRestTime(!isRestTime);
+                    setKey(prevKey => prevKey + 1);
                     return [true, 1000]}
                 }
                 >
