@@ -8,7 +8,8 @@ function PlayerPage({level, exercises}) {
     const [curruntIndex, setCurruntIndex] = useState(0);
 
     level = 2; //for debugging
-    exercises = [{name:"Crunches"}, {name:"Plank"}] //for debugging
+    exercises = [{name:"Crunches", image:"https://wger.de/media/exercise-images/91/Crunches-1.png"},
+                {name:"Benchpress Dumbbells", image:"https://wger.de/media/exercise-images/97/Dumbbell-bench-press-2.png"}] //for debugging
 
     function handleExerciseComplete() {
         console.log(curruntIndex)
@@ -24,6 +25,11 @@ function PlayerPage({level, exercises}) {
 
     return (
         <div className="p-player-page">
+            
+            <div className="exercise-image-wrapper">
+                <img src={exercises[curruntIndex].image} alt={exercises[curruntIndex].name}/>
+            </div>
+
             <div className="player-dashboard">
                 <div className="player-info">
                     <h3 className="bold-text">{exercises[curruntIndex].name}</h3>
@@ -37,7 +43,6 @@ function PlayerPage({level, exercises}) {
                 <div className="timer-wrapper">
                     <CountDownTimer isPlaying={isPlaying} level={level} onExerciseComplete={handleExerciseComplete}></CountDownTimer>
                 </div>
-
             </div>
         </div>
     );

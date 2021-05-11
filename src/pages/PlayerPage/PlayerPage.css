@@ -7,9 +7,9 @@
 }
 
 .p-player-page .player-dashboard {
-    position: fixed;
+    /* position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: 0; */
     width: 100%;
     background-color: #eee;
     display: flex;
@@ -25,4 +25,22 @@
 .p-player-page .player-buttons > svg {
     margin: 10px 10px 0 0;
     cursor: pointer;
+}
+
+.p-player-page .exercise-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.p-player-page .exercise-image-wrapper > img {
+    width: 300px;
+}
+
+.p-player-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
 }
