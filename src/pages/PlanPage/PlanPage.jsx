@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import ExerciseModel from '../../model/ExerciseModel/ExerciseModel';
+import fitness_loader from '../../assets/images/fitness_loader.gif';
+import './PlanPage.css';
 
 function PlanPage({preferences}) {
     const [exercises, setExercises] = useState(null);
@@ -39,6 +41,14 @@ function PlanPage({preferences}) {
 
     return (
         <div className="p-plan-page">
+            {exercises ? 
+                <div>
+                    
+                </div>
+                : <div className="loader-wrapper">
+                    <img src={fitness_loader} alt=""/>
+                    <p className="bold-text">Pumping. . .</p>
+                </div>}
         </div>
     );
 }
