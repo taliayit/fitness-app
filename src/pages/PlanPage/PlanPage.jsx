@@ -7,7 +7,7 @@ import './PlanPage.css';
 import ExerciseCard from '../../components/ExerciseCard/ExerciseCard';
 import { Col, Container, Row } from 'react-bootstrap';
 
-function PlanPage({preferences}) {
+function PlanPage({preferences, activeUser}) {
     const [workoutPlan, setWorkoutPlan] = useState(null);
     let exerciseCards = [];
 
@@ -33,8 +33,8 @@ function PlanPage({preferences}) {
             getExercises();
         }
     }, []);
-
-    if (!preferences) {
+    
+    if (!preferences || !activeUser) {
         return <Redirect to="/"/>
     }
 
@@ -63,7 +63,7 @@ function PlanPage({preferences}) {
                     <Row>
                         {workoutPlan.map((exercise, index) => 
                             <Col key={index} lg={4} md={6} className="mt-4">
-                                <ExerciseCard exercise={exercise}/>
+                                <ExerciseCard exercise={exercise} blured={activeUser === null}/>
                             </Col>
                         )}
                     </Row>
