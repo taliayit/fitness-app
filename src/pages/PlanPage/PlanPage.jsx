@@ -34,9 +34,6 @@ function PlanPage({preferences}) {
         }
     }, []);
 
-    if(workoutPlan) 
-        exerciseCards = workoutPlan.map((e, index) => <ExerciseCard key={index} exercise={e}/>);
-
     if (!preferences) {
         return <Redirect to="/"/>
     }
@@ -60,18 +57,21 @@ function PlanPage({preferences}) {
 
     return (
         <div className="p-plan-page">
-            <Container>
-                { workoutPlan ? 
+            { workoutPlan ? 
+                <Container>
+                    <Row><h2 className="bold-text m-auto">Your Workout Plan</h2></Row>
                     <Row>
-                        <Col>
-                            {exerciseCards}
-                        </Col>
+                        {workoutPlan.map((exercise, index) => 
+                            <Col key={index} lg={4} md={6} className="mt-4">
+                                <ExerciseCard exercise={exercise}/>
+                            </Col>
+                        )}
                     </Row>
-                    : <div className="loader-wrapper">
+                </Container>
+                : <div className="loader-wrapper">
                     <img src={fitness_loader} alt=""/>
                     <p className="bold-text">Pumping. . .</p>
                 </div>}
-            </Container>
         </div>
     );
 }

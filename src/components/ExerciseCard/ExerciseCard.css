@@ -1,9 +1,15 @@
-.card-img-top {
-    background-color: #eee;
+.c-exercise-card .card {
+    height: 420px;
+    box-shadow: 1px 1px 7px 2px #ccc;
     padding: 20px;
+    margin: 7px;
 }
 
-.card {
-    width: 300px;
-    box-shadow: 1px 1px 7px 2px #ccc;
+.c-exercise-card .card .card-img-top {
+    height: 300px;
+    object-fit: contain;
+}
+
+.c-exercise-card .card .card-title {
+    font-weight: 600 !important;
 }
