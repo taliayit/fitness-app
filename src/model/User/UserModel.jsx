@@ -1,4 +1,5 @@
 import Parse from 'parse';
+import WorkoutModel from '../Workout/WorkoutModel';
 
 export default class UserModel {
     #parseUser;
@@ -37,4 +38,18 @@ export default class UserModel {
         Parse.User.logOut();
     }
 
+    async createWorkout(name, level, duration, exercises) {
+        const Workout = Parse.Object.extend('Workout');
+        const newWorkout = new Workout();
+
+        newWorkout.set('name', name);
+        newWorkout.set('level', level);
+        newWorkout.set('duration', duration);
+        newWorkout.set('userId', this.#parseUser);
+        // newWorkout.set('exercises', new Parse.Object("Exercise"));
+
+        const parseWorkout = await newWorkout.save();
+        const workout = new WorkoutModel(parseWorkout);
+        return workout;
+    }
 }

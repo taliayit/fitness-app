@@ -5,4 +5,5 @@
 
 .card {
     width: 300px;
+    box-shadow: 1px 1px 7px 2px #ccc;
 }

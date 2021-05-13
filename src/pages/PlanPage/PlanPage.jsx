@@ -4,10 +4,12 @@ import { Redirect } from 'react-router-dom';
 import ExerciseModel from '../../model/ExerciseModel/ExerciseModel';
 import fitness_loader from '../../assets/images/fitness_loader.gif';
 import './PlanPage.css';
+import ExerciseCard from '../../components/ExerciseCard/ExerciseCard';
+import { Col, Container, Row } from 'react-bootstrap';
 
 function PlanPage({preferences}) {
-    const [exercises, setExercises] = useState(null);
     const [workoutPlan, setWorkoutPlan] = useState(null);
+    let exerciseCards = [];
 
     useEffect(() => {
         if(preferences) {
@@ -26,28 +28,20 @@ function PlanPage({preferences}) {
                         exercisesModelArray.push(new ExerciseModel(exerciseInfo.id, exerciseInfo.name, exerciseInfo.images[0].image));
                     }
                 }
-                setExercises(exercisesModelArray);
+                createPlan(exercisesModelArray);
             }
             getExercises();
         }
     }, []);
 
-    useEffect(() => {
-        console.log(exercises);
-        if(exercises) {
-            createPlan();
-        }
-    }, [exercises]);
-
-    useEffect(() => {
-        console.log(workoutPlan);
-    }, [workoutPlan]);
+    if(workoutPlan) 
+        exerciseCards = workoutPlan.map((e, index) => <ExerciseCard key={index} exercise={e}/>);
 
     if (!preferences) {
         return <Redirect to="/"/>
     }
 
-    function createPlan() {
+    function createPlan(exercises) {
         let planArr = [];
         if(exercises.length > preferences.time) {
             planArr = exercises.slice(0, preferences.time);
@@ -66,14 +60,18 @@ function PlanPage({preferences}) {
 
     return (
         <div className="p-plan-page">
-            {exercises && workoutPlan ? 
-                <div>
-                    
-                </div>
-                : <div className="loader-wrapper">
+            <Container>
+                { workoutPlan ? 
+                    <Row>
+                        <Col>
+                            {exerciseCards}
+                        </Col>
+                    </Row>
+                    : <div className="loader-wrapper">
                     <img src={fitness_loader} alt=""/>
                     <p className="bold-text">Pumping. . .</p>
                 </div>}
+            </Container>
         </div>
     );
 }
