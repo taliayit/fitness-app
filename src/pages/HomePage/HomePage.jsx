@@ -10,7 +10,7 @@ function HomePage(props) {
             <Container fluid>
                 <Row>
                     <Col md={7} className="p-0">
-                        <img className="bg-img" src={hompageImage}/>
+                        <img className="bg-img" src={hompageImage} alt="workout"/>
                     </Col>
                     <Col md={5} className="text-left p-5">
                         <h1 className="bold-text">FIT ME<span className="red-text">.</span></h1>

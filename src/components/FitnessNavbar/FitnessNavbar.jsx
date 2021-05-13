@@ -9,7 +9,7 @@ function FitnessNavbar({activeUser, onLogout}) {
     return (
         <div className="c-fitness-navbar">
             <Navbar bg="transparent" expand="lg">
-                <Navbar.Brand href="#/" className="bold-text"><img src={logo}/>FIT ME</Navbar.Brand>
+                <Navbar.Brand href="#/" className="bold-text"><img src={logo} alt="hand muscle"/>FIT ME</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

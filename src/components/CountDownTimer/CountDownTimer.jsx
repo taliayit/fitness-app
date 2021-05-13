@@ -28,6 +28,7 @@ function CountDownTimer({isPlaying, level, onExerciseComplete}) {
                 activeTime = 50;
                 restTime = 10;
                 break;
+            default:
         }
     }
     
