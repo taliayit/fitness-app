@@ -6,6 +6,7 @@ import fitness_loader from '../../assets/images/fitness_loader.gif';
 import './PlanPage.css';
 import ExerciseCard from '../../components/ExerciseCard/ExerciseCard';
 import { Col, Container, Row } from 'react-bootstrap';
+import LockBodyScroll from '../../helpers/LockBodyScroll.jsx';
 import LoginRequiredModal from '../../components/LoginRequiredModal/LoginRequiredModal';
 
 function PlanPage({preferences, activeUser}) {
@@ -65,7 +66,10 @@ function PlanPage({preferences, activeUser}) {
             {workoutPlan ? 
                 <Container>
                     {!activeUser && (
-                        <LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>
+                        <div>
+                            <LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>
+                            <LockBodyScroll/>
+                        </div>
                     )}
                     <Row><h2 className="bold-text m-auto">Your Workout Plan</h2></Row>
                     <Row>
