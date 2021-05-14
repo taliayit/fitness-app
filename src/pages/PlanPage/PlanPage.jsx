@@ -65,12 +65,9 @@ function PlanPage({preferences, activeUser}) {
         <div className="p-plan-page">
             {workoutPlan ? 
                 <Container>
-                    {!activeUser && (
-                        <div>
-                            <LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>
-                            <LockBodyScroll/>
-                        </div>
-                    )}
+                    {!activeUser && (<LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>)}
+                    {!activeUser && (<LockBodyScroll/>)}
+                    
                     <Row><h2 className="bold-text m-auto">Your Workout Plan</h2></Row>
                     <Row>
                         {workoutPlan.map((exercise, index) => 
