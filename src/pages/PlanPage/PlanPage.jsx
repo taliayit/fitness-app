@@ -6,10 +6,11 @@ import fitness_loader from '../../assets/images/fitness_loader.gif';
 import './PlanPage.css';
 import ExerciseCard from '../../components/ExerciseCard/ExerciseCard';
 import { Col, Container, Row } from 'react-bootstrap';
+import LoginRequiredModal from '../../components/LoginRequiredModal/LoginRequiredModal';
 
 function PlanPage({preferences, activeUser}) {
     const [workoutPlan, setWorkoutPlan] = useState(null);
-    let exerciseCards = [];
+    const [showModal, setShowModal] = useState(!activeUser);
 
     useEffect(() => {
         if(preferences) {
@@ -34,7 +35,11 @@ function PlanPage({preferences, activeUser}) {
         }
     }, []);
     
-    if (!preferences || !activeUser) {
+    useEffect(() => {
+        setShowModal(!activeUser);
+    }, [activeUser]);
+
+    if (!preferences) {
         return <Redirect to="/"/>
     }
 
@@ -57,8 +62,11 @@ function PlanPage({preferences, activeUser}) {
 
     return (
         <div className="p-plan-page">
-            { workoutPlan ? 
+            {workoutPlan ? 
                 <Container>
+                    {!activeUser && (
+                        <LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>
+                    )}
                     <Row><h2 className="bold-text m-auto">Your Workout Plan</h2></Row>
                     <Row>
                         {workoutPlan.map((exercise, index) => 
