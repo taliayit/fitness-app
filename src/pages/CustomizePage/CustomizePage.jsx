@@ -18,10 +18,6 @@ function CustomizePage({activeUser, onSubmit}) {
         setIsValidToSubmit(level !== "0" && time > 0 && muscles.length > 0);
     }, [level, time, muscles])
 
-    if (!activeUser) {
-        return <Redirect to="/"/>
-    }
-
     function handleInvalidSubmit(e) {
         e.preventDefault();
         setErrorMessage("Please select all preferences.")
