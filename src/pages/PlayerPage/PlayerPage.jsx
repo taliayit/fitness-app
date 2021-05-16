@@ -4,11 +4,13 @@ import { FaPlay, FaPause } from 'react-icons/fa';
 import rest_animation from '../../assets/images/rest_animation.gif';
 import './PlayerPage.css';
 import { Redirect } from 'react-router-dom';
+import WorkoutCompleteModal from '../../components/WorkoutCompleteModal/WorkoutCompleteModal';
 
 function PlayerPage({planData}) {
     const [isPlaying, setIsPlaying] = useState(true);
     const [curruntIndex, setCurruntIndex] = useState(0);
     const [currentImage, setCurrentImage] = useState("");
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         if (planData)
@@ -30,6 +32,7 @@ function PlayerPage({planData}) {
         else {
             setIsPlaying(false);
             //show workout complete modal
+            setShowModal(true);
         }
     }
     return (
@@ -53,6 +56,7 @@ function PlayerPage({planData}) {
                     <CountDownTimer isPlaying={isPlaying} level={planData.level} onExerciseComplete={handleExerciseComplete}></CountDownTimer>
                 </div>
             </div>
+            <WorkoutCompleteModal show={showModal} onClose={() => setShowModal(false)} level={planData.level} time={planData.exercises.length}/>
         </div>
     );
 }
