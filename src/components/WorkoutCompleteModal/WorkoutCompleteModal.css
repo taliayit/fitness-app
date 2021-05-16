@@ -1,7 +1,7 @@
 .modal-header,
 .modal-footer {
     align-self: center;
-    border: none;
+    border: none !important;
 }
 
 .modal-body {
@@ -12,5 +12,5 @@
 }
 
 .modal-content {
-    width: 420px;
+    width: 420px !important;
 }
