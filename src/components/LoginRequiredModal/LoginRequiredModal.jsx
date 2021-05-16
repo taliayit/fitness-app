@@ -6,8 +6,9 @@ import './LoginRequiredModal.css';
 function LoginRequiredModal({show, onClose}) {
 
     return (
-        <div className="c-login-required-modal">
+        <div>
             <Modal
+                id="login-required-modal"
                 show={show}
                 onHide={onClose}>
                 <Modal.Body>

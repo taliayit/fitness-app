@@ -1,16 +1,16 @@
-.modal-header,
-.modal-footer {
+#workout-complete-modal .modal-header,
+#workout-complete-modal .modal-footer {
     align-self: center;
     border: none !important;
 }
 
-.modal-body {
+#workout-complete-modal .modal-body {
     text-align: center;
 }
-.modal-body img {
+#workout-complete-modal .modal-body > img {
     margin-bottom: 30px;
 }
 
-.modal-content {
+#workout-complete-modal .modal-content {
     width: 420px !important;
 }

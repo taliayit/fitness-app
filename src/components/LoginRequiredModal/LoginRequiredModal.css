@@ -1,9 +1,9 @@
-.modal-content {
+#login-required-modal .modal-content {
     padding: 0 10px;
 }
 
-.modal-footer > button,
-.modal-footer > a {
+#login-required-modal .modal-footer > button,
+#login-required-modal .modal-footer > a {
     font-size: 18px !important;
     padding: 8px 15px !important;
 }

@@ -4,7 +4,7 @@ import medal from '../../assets/images/medal.png';
 import './WorkoutCompleteModal.css';
 import Parse from 'parse';
 
-function WorkoutCompleteModal({show, onClose, level, time}) {
+function WorkoutCompleteModal({show, onClose, level, time, saveWorkoutClicked}) {
     const timeFormatted = useMemo(() => {
         let hours = Math.floor(time/60);
         let fhours = '0' + hours;
@@ -12,13 +12,11 @@ function WorkoutCompleteModal({show, onClose, level, time}) {
         let fminutes = minutes.toString().length === 1 ?  '0' + minutes : minutes;
         return fhours + ":" + fminutes;    
     });
-    
-    function saveWorkout() {
-    }
 
     return (
-        <div className="c-workout-complete-modal">
+        <div>
             <Modal
+                id="workout-complete-modal"
                 show={show}
                 onHide={onClose}
                 centered>
@@ -45,7 +43,7 @@ function WorkoutCompleteModal({show, onClose, level, time}) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button id="red-btn" onClick={saveWorkout()}>Save Workout</Button>
+                    <Button id="red-btn" onClick={saveWorkoutClicked}>Save Workout</Button>
                 </Modal.Footer>
             </Modal>
         </div>
