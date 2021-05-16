@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import ExerciseModel from '../../model/ExerciseModel/ExerciseModel';
 import fitness_loader from '../../assets/images/fitness_loader.gif';
 import './PlanPage.css';
@@ -9,7 +9,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import LockBodyScroll from '../../helpers/LockBodyScroll.jsx';
 import LoginRequiredModal from '../../components/LoginRequiredModal/LoginRequiredModal';
 
-function PlanPage({preferences, activeUser}) {
+function PlanPage({preferences, activeUser, onPlay}) {
     const [workoutPlan, setWorkoutPlan] = useState(null);
     const [showModal, setShowModal] = useState(!activeUser);
 
@@ -68,7 +68,18 @@ function PlanPage({preferences, activeUser}) {
                     {!activeUser && (<LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>)}
                     {!activeUser && (<LockBodyScroll/>)}
                     
-                    <Row><h2 className="bold-text m-auto">Your Workout Plan</h2></Row>
+                    <Row>
+                        <Col className="d-flex">
+                            <h2 className="bold-text m-auto">Your Workout Plan</h2>
+                            {activeUser &&
+                            (<Link 
+                                to="/player"
+                                id="red-btn"
+                                onClick={() => onPlay({level: preferences.level, exercises: workoutPlan})}>
+                                Let's Workout
+                            </Link>)}
+                        </Col>
+                    </Row>
                     <Row>
                         {workoutPlan.map((exercise, index) => 
                             <Col key={index} lg={4} md={6} className="mt-4">

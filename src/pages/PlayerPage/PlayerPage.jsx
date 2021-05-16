@@ -1,47 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CountDownTimer from '../../components/CountDownTimer/CountDownTimer';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import rest_animation from '../../assets/images/rest_animation.gif';
 import './PlayerPage.css';
+import { Redirect } from 'react-router-dom';
 
-function PlayerPage({level, exercises}) {
+function PlayerPage({planData}) {
     const [isPlaying, setIsPlaying] = useState(true);
     const [curruntIndex, setCurruntIndex] = useState(0);
+    const [currentImage, setCurrentImage] = useState("");
 
-    level = 2; //for debugging
-    exercises = [{name:"Crunches", image:"https://wger.de/media/exercise-images/91/Crunches-1.png"},
-                {name:"Benchpress Dumbbells", image:"https://wger.de/media/exercise-images/97/Dumbbell-bench-press-2.png"}] //for debugging
+    useEffect(() => {
+        if (planData)
+            setCurrentImage(planData.exercises[0].image);
+    }, []);
+    
+    if (!planData) {
+        return <Redirect to="/"/>
+    }
 
-    function handleExerciseComplete() {
-        console.log(curruntIndex)
-        if(curruntIndex + 1 < exercises.length) {
+    function handleExerciseComplete(isRestTime) {
+        if(curruntIndex + 1 < planData.exercises.length) {
             setCurruntIndex(curruntIndex + 1);
-            
+            if(isRestTime)
+                setCurrentImage(planData.exercises[curruntIndex].image);
+            else
+                setCurrentImage(rest_animation);
         }
         else {
             setIsPlaying(false);
             //show workout complete modal
         }
     }
-
     return (
         <div className="p-player-page">
             
             <div className="exercise-image-wrapper">
-                <img src={exercises[curruntIndex].image} alt={exercises[curruntIndex].name}/>
+                <img src={currentImage} alt="workout"/>
             </div>
 
             <div className="player-dashboard">
                 <div className="player-info">
-                    <h3 className="bold-text">{exercises[curruntIndex].name}</h3>
+                    <h3 className="bold-text">{planData.exercises[curruntIndex].name}</h3>
                     <span className="bold-text">Next: </span>
-                    <span>{(curruntIndex + 1 < exercises.length) ? exercises[curruntIndex+1].name : 'Workout Complete!'}</span>
+                    <span>{(curruntIndex + 1 < planData.exercises.length) ? planData.exercises[curruntIndex+1].name : 'Workout Complete!'}</span>
                     <div className="player-buttons">
                         <FaPlay onClick={() => setIsPlaying(true)}/>
                         <FaPause onClick={() => setIsPlaying(false)}/>
                     </div>
                 </div>
                 <div className="timer-wrapper">
-                    <CountDownTimer isPlaying={isPlaying} level={level} onExerciseComplete={handleExerciseComplete}></CountDownTimer>
+                    <CountDownTimer isPlaying={isPlaying} level={planData.level} onExerciseComplete={handleExerciseComplete}></CountDownTimer>
                 </div>
             </div>
         </div>
