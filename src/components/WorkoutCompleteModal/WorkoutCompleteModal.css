@@ -1,0 +1,16 @@
+.modal-header,
+.modal-footer {
+    align-self: center;
+    border: none;
+}
+
+.modal-body {
+    text-align: center;
+}
+.modal-body img {
+    margin-bottom: 30px;
+}
+
+.modal-content {
+    width: 420px;
+}
