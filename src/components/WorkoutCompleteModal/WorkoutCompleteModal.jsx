@@ -2,9 +2,8 @@ import React, { useEffect, useMemo } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import medal from '../../assets/images/medal.png';
 import './WorkoutCompleteModal.css';
-import Parse from 'parse';
 
-function WorkoutCompleteModal({show, onClose, level, time, saveWorkoutClicked}) {
+function WorkoutCompleteModal({show, onClose, level, time, onSave}) {
     const timeFormatted = useMemo(() => {
         let hours = Math.floor(time/60);
         let fhours = '0' + hours;
@@ -12,6 +11,11 @@ function WorkoutCompleteModal({show, onClose, level, time, saveWorkoutClicked}) 
         let fminutes = minutes.toString().length === 1 ?  '0' + minutes : minutes;
         return fhours + ":" + fminutes;    
     });
+
+    function saveWorkout() {
+        onSave("name");
+        onClose();
+    }
 
     return (
         <div>
@@ -43,7 +47,7 @@ function WorkoutCompleteModal({show, onClose, level, time, saveWorkoutClicked}) 
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button id="red-btn" onClick={saveWorkoutClicked}>Save Workout</Button>
+                    <Button id="red-btn" onClick={saveWorkout}>Save Workout</Button>
                 </Modal.Footer>
             </Modal>
         </div>

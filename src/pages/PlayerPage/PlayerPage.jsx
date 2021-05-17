@@ -5,8 +5,9 @@ import rest_animation from '../../assets/images/rest_animation.gif';
 import './PlayerPage.css';
 import { Redirect } from 'react-router-dom';
 import WorkoutCompleteModal from '../../components/WorkoutCompleteModal/WorkoutCompleteModal';
+// import Parse from 'parse';
 
-function PlayerPage({planData}) {
+function PlayerPage({activeUser, planData}) {
     const [isPlaying, setIsPlaying] = useState(true);
     const [curruntIndex, setCurruntIndex] = useState(0);
     const [currentImage, setCurrentImage] = useState("");
@@ -35,6 +36,13 @@ function PlayerPage({planData}) {
             setShowModal(true);
         }
     }
+    
+    async function saveWorkout(name) {
+        console.log(activeUser)
+        const newWorkout = await activeUser.addWorkout(name, planData.level, planData.exercises.length, planData.exercises);
+        
+    }
+
     return (
         <div className="p-player-page">
             
@@ -56,7 +64,11 @@ function PlayerPage({planData}) {
                     <CountDownTimer isPlaying={isPlaying} level={planData.level} onExerciseComplete={handleExerciseComplete}></CountDownTimer>
                 </div>
             </div>
-            <WorkoutCompleteModal show={showModal} onClose={() => setShowModal(false)} level={planData.level} time={planData.exercises.length}/>
+            <WorkoutCompleteModal show={showModal}
+                onClose={() => setShowModal(false)}
+                level={planData.level}
+                time={planData.exercises.length}
+                onSave={saveWorkout}/>
         </div>
     );
 }

@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/login"><LoginPage activeUser={activeUser} onLogin={user => setActiveUser(user)}/></Route>
           <Route exact path="/customize"><CustomizePage activeUser={activeUser} onSubmit={setPreferences}/></Route>
           <Route exact path="/plan"><PlanPage preferences={preferences} activeUser={activeUser} onPlay={setPlanData}/></Route>
-          <Route exact path="/player"><PlayerPage planData={planData}/></Route>
+          <Route exact path="/player"><PlayerPage planData={planData} activeUser={activeUser}/></Route>
           <Route exact path="/workouts"><WorkoutsPage/></Route>
         </Switch>
       </HashRouter>
