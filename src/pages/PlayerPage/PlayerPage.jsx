@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CountDownTimer from '../../components/CountDownTimer/CountDownTimer';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { FaPlay, FaPause, FaForward } from 'react-icons/fa';
 import rest_animation from '../../assets/images/rest_animation.gif';
 import './PlayerPage.css';
 import { Redirect } from 'react-router-dom';
@@ -37,6 +37,10 @@ function PlayerPage({activeUser, planData}) {
         }
     }
     
+    function handleForward() {
+
+    }
+
     async function saveWorkout(name) {
         console.log(activeUser)
         const newWorkout = await activeUser.addWorkout(name, planData.level, planData.exercises.length, planData.exercises);
@@ -58,6 +62,7 @@ function PlayerPage({activeUser, planData}) {
                     <div className="player-buttons">
                         <FaPlay onClick={() => setIsPlaying(true)}/>
                         <FaPause onClick={() => setIsPlaying(false)}/>
+                        <FaForward onClick={() => handleForward()}/>
                     </div>
                 </div>
                 <div className="timer-wrapper">
