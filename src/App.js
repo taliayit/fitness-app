@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/customize"><CustomizePage activeUser={activeUser} onSubmit={setPreferences}/></Route>
           <Route exact path="/plan"><PlanPage preferences={preferences} activeUser={activeUser} onPlay={setPlanData}/></Route>
           <Route exact path="/player"><PlayerPage planData={planData} activeUser={activeUser}/></Route>
-          <Route exact path="/workouts"><WorkoutsPage/></Route>
+          <Route exact path="/workouts"><WorkoutsPage activeUser={activeUser}/></Route>
         </Switch>
       </HashRouter>
     </div>
