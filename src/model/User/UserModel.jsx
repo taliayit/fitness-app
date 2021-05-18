@@ -38,18 +38,27 @@ export default class UserModel {
         Parse.User.logOut();
     }
 
-    async addWorkout(name, level, duration, exercises) {
+    async addWorkout(name, level, time, exercises) {
         const Workout = Parse.Object.extend('Workout');
         const newWorkout = new Workout();
         
         newWorkout.set('name', name);
         newWorkout.set('level', level);
-        newWorkout.set('duration', duration);
+        newWorkout.set('time', time);
         newWorkout.set('exercises',exercises);
         newWorkout.set('userId', this.#parseUser);
 
         const parseWorkout = await newWorkout.save();
         const workout = new WorkoutModel(parseWorkout);
         return workout;
+    }
+
+    async getMyWorkouts() {
+        const Workout = Parse.Object.extend('Workout');
+        const query = new Parse.Query(Workout);
+        query.equalTo("userId", this.#parseUser);
+        const parseWorkouts = await query.find();
+        const workouts = parseWorkouts.map(parseWorkout => new WorkoutModel(parseWorkout));
+        return workouts;
     }
 }
