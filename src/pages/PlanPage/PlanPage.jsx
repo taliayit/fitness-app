@@ -21,16 +21,17 @@ function PlanPage({preferences, activeUser, onPlay}) {
                 let url = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=200&muscles=${allMuscles}`;
                 const response = await axios.get(url);
                 const dataExercises = response.data.results;
-                let exercisesModelArray = []; 
+                let exercises = []; 
 
                 for(const e of dataExercises) {
                     const res = await axios.get(`https://wger.de/api/v2/exerciseinfo/${e.id}`);
                     const exerciseInfo = res.data;
                     if(exerciseInfo.images.length > 0) {
-                        exercisesModelArray.push(new ExerciseModel(exerciseInfo.id, exerciseInfo.name, exerciseInfo.images[0].image));
+                        let muscles = exerciseInfo.muscles.map(m => ({id:m.id, name:m.name}));
+                        exercises.push(new ExerciseModel(exerciseInfo.id, exerciseInfo.name, exerciseInfo.images[0].image, muscles));
                     }
                 }
-                createPlan(exercisesModelArray);
+                createPlan(exercises);
             }
             getExercises();
         }
@@ -68,16 +69,18 @@ function PlanPage({preferences, activeUser, onPlay}) {
                     {!activeUser && (<LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>)}
                     {!activeUser && (<LockBodyScroll/>)}
                     
-                    <Row>
-                        <Col className="d-flex">
+                    <Row className="header justify-content-between">
+                        <Col>
                             <h2 className="bold-text m-auto">Your Workout Plan</h2>
+                        </Col>
+                        <Col className="col-auto">
                             {activeUser &&
-                            (<Link 
-                                to="/player"
-                                id="red-btn"
-                                onClick={() => onPlay({level: preferences.level, exercises: workoutPlan})}>
-                                Let's Workout
-                            </Link>)}
+                                (<Link 
+                                    to="/player"
+                                    id="red-btn"
+                                    onClick={() => onPlay({level: preferences.level, exercises: workoutPlan})}>
+                                    Let's Workout
+                                </Link>)}
                         </Col>
                     </Row>
                     <Row>

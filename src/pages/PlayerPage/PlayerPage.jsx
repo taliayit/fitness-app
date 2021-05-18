@@ -5,7 +5,6 @@ import rest_animation from '../../assets/images/rest_animation.gif';
 import './PlayerPage.css';
 import { Redirect } from 'react-router-dom';
 import WorkoutCompleteModal from '../../components/WorkoutCompleteModal/WorkoutCompleteModal';
-// import Parse from 'parse';
 
 function PlayerPage({activeUser, planData}) {
     const [isPlaying, setIsPlaying] = useState(true);
@@ -14,8 +13,9 @@ function PlayerPage({activeUser, planData}) {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        if (planData)
+        if (planData) {
             setCurrentImage(planData.exercises[0].image);
+        }
     }, []);
     
     if (!planData) {
@@ -32,19 +32,16 @@ function PlayerPage({activeUser, planData}) {
         }
         else {
             setIsPlaying(false);
-            //show workout complete modal
             setShowModal(true);
         }
     }
     
     function handleForward() {
-
     }
 
     async function saveWorkout(name) {
-        console.log(activeUser)
         const newWorkout = await activeUser.addWorkout(name, planData.level, planData.exercises.length, planData.exercises);
-        
+    
     }
 
     return (
@@ -66,7 +63,11 @@ function PlayerPage({activeUser, planData}) {
                     </div>
                 </div>
                 <div className="timer-wrapper">
-                    <CountDownTimer isPlaying={isPlaying} level={planData.level} onExerciseComplete={handleExerciseComplete}></CountDownTimer>
+                    <CountDownTimer
+                        isPlaying={isPlaying}
+                        level={planData.level}
+                        onExerciseComplete={handleExerciseComplete}>     
+                    </CountDownTimer>
                 </div>
             </div>
             <WorkoutCompleteModal show={showModal}

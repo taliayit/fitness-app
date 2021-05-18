@@ -41,13 +41,12 @@ export default class UserModel {
     async addWorkout(name, level, duration, exercises) {
         const Workout = Parse.Object.extend('Workout');
         const newWorkout = new Workout();
-
+        
         newWorkout.set('name', name);
         newWorkout.set('level', level);
         newWorkout.set('duration', duration);
+        newWorkout.set('exercises',exercises);
         newWorkout.set('userId', this.#parseUser);
-        
-        // newWorkout.set('exercises', new Parse.Object("Exercise"));
 
         const parseWorkout = await newWorkout.save();
         const workout = new WorkoutModel(parseWorkout);
