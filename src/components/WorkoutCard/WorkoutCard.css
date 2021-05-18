@@ -1,5 +1,6 @@
 .c-workout-card .card {
     padding: 0;
+    height: 300px;
     box-shadow: 1px 1px 7px 2px #ccc;
 }
 
@@ -7,8 +8,13 @@
     font-weight: 600;
 }
 
-.c-workout-card .card .card-text {
-    text-align: left;
+.c-workout-card .card .text-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-workout-card .text-wrapper .card-text:first-child {
+    font-weight: 600;
 }
 
 .c-workout-card .card .card-footer {
