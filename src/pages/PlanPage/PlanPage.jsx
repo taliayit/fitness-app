@@ -27,8 +27,9 @@ function PlanPage({preferences, activeUser, onPlay}) {
                     const res = await axios.get(`https://wger.de/api/v2/exerciseinfo/${e.id}`);
                     const exerciseInfo = res.data;
                     if(exerciseInfo.images.length > 0) {
-                        let muscles = exerciseInfo.muscles.map(m => ({id:m.id, name:m.name}));
-                        exercises.push(new ExerciseModel(exerciseInfo.id, exerciseInfo.name, exerciseInfo.images[0].image, muscles));
+                        // console.log(exerciseInfo.category)
+                        // let muscles = exerciseInfo.muscles.map(m => ({id:m.id, name:m.name}));
+                        exercises.push(new ExerciseModel(exerciseInfo.id, exerciseInfo.name, exerciseInfo.images[0].image, exerciseInfo.category.name));
                     }
                 }
                 createPlan(exercises);

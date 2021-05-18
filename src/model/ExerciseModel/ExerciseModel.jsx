@@ -1,9 +1,9 @@
 
 export default class ExerciseModel {
-    constructor(id, name, image, muscles) {
+    constructor(id, name, image, category) {
         this.id = id;
         this.name = name;
         this.image = image;
-        this.muscles = muscles;
+        this.category = category;
     }
 }
