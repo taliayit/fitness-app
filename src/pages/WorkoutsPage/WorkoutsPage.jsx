@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Button, Modal } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import WorkoutCard from '../../components/WorkoutCard/WorkoutCard';
 import './WorkoutsPage.css'
 
 function WorkoutsPage({activeUser}) {
     const [workouts, setWorkouts] = useState(null);
-    // let workouts = [{name: "My_workout_#1", level: "2", time: "00:30", muscles: ["1","2"]}];
+    const [showConfirm, setShowConfirm] = useState(false);
+    const [workoutToDelete, setWorkoutToDelete] = useState(null);
+
 
     useEffect(() => {
         async function fetchData() {
@@ -23,6 +25,25 @@ function WorkoutsPage({activeUser}) {
         return <Redirect to="/"/>
     }
     
+    function onDelete(workoutToDelete) {
+        setShowConfirm(true);
+        setWorkoutToDelete(workoutToDelete)
+    }
+
+    function deleteWorkout() {
+        if(workoutToDelete) {
+            console.log(workoutToDelete)
+            workoutToDelete.deleteWorkout();
+            let array = [...workouts]; 
+            var index = array.indexOf(workoutToDelete)
+            if (index !== -1) {
+                array.splice(index, 1);
+                setWorkouts(array);
+            }
+            setShowConfirm(false);
+        }
+    }
+
     return (
         <div className="p-workouts">
             <h2 className="bold-text m-auto">My Workouts</h2>
@@ -31,12 +52,21 @@ function WorkoutsPage({activeUser}) {
                     <Row>
                         {workouts.map((workout, index) => 
                             <Col key={index} lg={4} md={6} className="mt-4">
-                                <WorkoutCard workout={workout}/>
+                                <WorkoutCard workout={workout} onDelete={onDelete}/>
                             </Col>
                         )}
                     </Row>
                 </Container>
                 : <p className="no-data-msg">No saved workouts . . .</p>}
+
+            <Modal show={showConfirm} onHide={() => setShowConfirm(false)}>
+                <Modal.Body>Are you sure?</Modal.Body>
+                <Modal.Footer className="justify-content-between border-0">
+                    <Button id="white-btn" onClick={() => setShowConfirm(false)}>Cancel</Button>
+                    <Button id="red-btn" onClick={deleteWorkout}>Yes</Button>
+                    
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }

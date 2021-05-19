@@ -4,7 +4,7 @@ import logo from '../../assets/images/logo_black.png';
 import delete_icon from '../../assets/images/delete_icon.png';
 import './WorkoutCard.css';
 
-function WorkoutCard({workout}) {
+function WorkoutCard({workout, onDelete}) {
     let categories = [];
     for(let e of workout.exercises) {
         if(!categories.includes(e.category))
@@ -32,21 +32,21 @@ function WorkoutCard({workout}) {
             <Card>
                 <Card.Body>
                     <Card.Title className="red-text">{workout.name}</Card.Title>
-                    <div className="text-wrapper">
+                    <div className="level-text-wrapper">
                         <Card.Text>Level: </Card.Text>
                         <Card.Text>{getLevelString(workout.level)}</Card.Text>
                     </div>
-                    <div className="text-wrapper">
+                    <div className="time-text-wrapper">
                         <Card.Text>Time:</Card.Text>
                         <Card.Text>{getFormatTime(workout.time)}</Card.Text>
                     </div>
-                    <div className="text-wrapper">
+                    <div className="areas-text-wrapper">
                         <Card.Text>Areas:</Card.Text>
                         <Card.Text>{categories.join(', ')}</Card.Text>
                     </div>
                 </Card.Body>
                 <Card.Footer>
-                    <div className="delete-btn">
+                    <div className="delete-btn" onClick={()=>onDelete(workout)}>
                         <img src={delete_icon} alt="bin"/>
                     </div>
                     <div className="start-btn">

@@ -1,3 +1,4 @@
+import Parse from 'parse';
 
 export default class WorkoutModel {
     constructor(parseWorkout) {
@@ -7,4 +8,14 @@ export default class WorkoutModel {
         this.time = parseWorkout.get("time");
         this.exercises = parseWorkout.get("exercises");
     }
+
+    async deleteWorkout() {
+        console.log(this)
+        const Workout = Parse.Object.extend('Workout');
+        const query = new Parse.Query(Workout);
+
+        const parseWorkout = await query.get(this.id);
+        (await parseWorkout).destroy();
+    }
+
 }
