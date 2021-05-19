@@ -1,10 +1,11 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import logo from '../../assets/images/logo_black.png';
 import delete_icon from '../../assets/images/delete_icon.png';
 import './WorkoutCard.css';
+import { Link } from 'react-router-dom';
 
-function WorkoutCard({workout, onDelete}) {
+function WorkoutCard({workout, onDelete, onPlay}) {
     let categories = [];
     for(let e of workout.exercises) {
         if(!categories.includes(e.category))
@@ -50,7 +51,12 @@ function WorkoutCard({workout, onDelete}) {
                         <img src={delete_icon} alt="bin"/>
                     </div>
                     <div className="start-btn">
-                        <img src={logo} alt="hand muscle"/>
+                        <Link 
+                            to="/player"
+                            onClick={() => onPlay({level: workout.level, exercises: workout.exercises})}>
+                            <img src={logo} alt="hand muscle"/>
+                        </Link>
+                        
                     </div>
                 </Card.Footer>
             </Card>

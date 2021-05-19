@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import WorkoutCard from '../../components/WorkoutCard/WorkoutCard';
 import './WorkoutsPage.css'
 
-function WorkoutsPage({activeUser}) {
+function WorkoutsPage({activeUser, onPlay}) {
     const [workouts, setWorkouts] = useState(null);
     const [showConfirm, setShowConfirm] = useState(false);
     const [workoutToDelete, setWorkoutToDelete] = useState(null);
@@ -52,7 +52,7 @@ function WorkoutsPage({activeUser}) {
                     <Row>
                         {workouts.map((workout, index) => 
                             <Col key={index} lg={4} md={6} className="my-3">
-                                <WorkoutCard workout={workout} onDelete={onDelete}/>
+                                <WorkoutCard workout={workout} onDelete={onDelete} onPlay={onPlay}/>
                             </Col>
                         )}
                     </Row>
