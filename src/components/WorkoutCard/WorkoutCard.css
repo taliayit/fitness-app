@@ -21,7 +21,6 @@
     text-align: right;
 }
 
-
 .c-workout-card .card .card-footer {
     display: flex;
     justify-content: space-between;
@@ -40,22 +39,28 @@
 .c-workout-card .card .start-btn,
 .c-workout-card .card .delete-btn {
     width: 100%;
-    padding: 10px;
     cursor: pointer;
 }
 
 .c-workout-card .card .delete-btn {
-    background-color: #fa7470;
-}
-
-.c-workout-card .card .start-btn {
+    padding: 10px;
     background-color: #bbb;
 }
 
+.c-workout-card .card .start-btn {
+    background-color: #fa7470;
+}
+
 .c-workout-card .card .delete-btn:hover {
-    background-color: #df6763;
+    background-color: #999;
 }
 
 .c-workout-card .card .start-btn:hover {
-    background-color: #999;
+    background-color: #df6763;
 }
+
+.c-workout-card .card .start-btn > a {
+    display: block;
+    padding: 10px;
+}
+
