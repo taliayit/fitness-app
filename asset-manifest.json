@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/fitness-app/static/css/main.c98ac307.chunk.css",
+    "main.js": "/fitness-app/static/js/main.6e943725.chunk.js",
+    "main.js.map": "/fitness-app/static/js/main.6e943725.chunk.js.map",
+    "runtime-main.js": "/fitness-app/static/js/runtime-main.baf1c42f.js",
+    "runtime-main.js.map": "/fitness-app/static/js/runtime-main.baf1c42f.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/fitness-app/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.5ed31a53.chunk.js": "/fitness-app/static/js/2.5ed31a53.chunk.js",
+    "static/js/2.5ed31a53.chunk.js.map": "/fitness-app/static/js/2.5ed31a53.chunk.js.map",
+    "static/js/3.b8df0286.chunk.js": "/fitness-app/static/js/3.b8df0286.chunk.js",
+    "static/js/3.b8df0286.chunk.js.map": "/fitness-app/static/js/3.b8df0286.chunk.js.map",
+    "index.html": "/fitness-app/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/fitness-app/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.c98ac307.chunk.css.map": "/fitness-app/static/css/main.c98ac307.chunk.css.map",
+    "static/js/2.5ed31a53.chunk.js.LICENSE.txt": "/fitness-app/static/js/2.5ed31a53.chunk.js.LICENSE.txt",
+    "static/media/body_sm.6c84e60c.png": "/fitness-app/static/media/body_sm.6c84e60c.png",
+    "static/media/delete_icon.61e22baa.png": "/fitness-app/static/media/delete_icon.61e22baa.png",
+    "static/media/fitness_loader.6540088b.gif": "/fitness-app/static/media/fitness_loader.6540088b.gif",
+    "static/media/homepage_bg.1613d978.jpg": "/fitness-app/static/media/homepage_bg.1613d978.jpg",
+    "static/media/login_bg.97bf7567.jpg": "/fitness-app/static/media/login_bg.97bf7567.jpg",
+    "static/media/logo_black.b01e638e.png": "/fitness-app/static/media/logo_black.b01e638e.png",
+    "static/media/medal.1006f277.png": "/fitness-app/static/media/medal.1006f277.png",
+    "static/media/rest_animation.a9716ea8.gif": "/fitness-app/static/media/rest_animation.a9716ea8.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.baf1c42f.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.5ed31a53.chunk.js",
+    "static/css/main.c98ac307.chunk.css",
+    "static/js/main.6e943725.chunk.js"
+  ]
+}
