@@ -17,8 +17,8 @@ function CountDownTimer({isPlaying, level, onExerciseComplete}) {
     function setTimes() {
         switch(level) {
             case 1: 
-                activeTime = 1;
-                restTime = 1;
+                activeTime = 30;
+                restTime = 30;
                 break;
             case 2: 
                 activeTime = 40;
