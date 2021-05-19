@@ -4,7 +4,6 @@ import logo from '../../assets/images/logo_red.png';
 import './FitnessNavbar.css'
 
 function FitnessNavbar({activeUser, onLogout}) {
-    // activeUser = true; // for debugging purposes
 
     return (
         <div className="c-fitness-navbar">

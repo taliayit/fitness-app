@@ -26,7 +26,7 @@ function CustomizePage({activeUser, onSubmit}) {
     return (
         <div className="p-customize">
             <Container>
-                <Row><h2 className="bold-text m-auto">Customize Workout</h2></Row>
+                <h2 className="bold-text my-3">Customize Workout</h2>
                 <Row>
                     <Col className="left-col" md={5}>
                         <h4 className="bold-text">Level</h4>

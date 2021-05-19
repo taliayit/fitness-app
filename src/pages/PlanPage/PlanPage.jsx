@@ -27,8 +27,6 @@ function PlanPage({preferences, activeUser, onPlay}) {
                     const res = await axios.get(`https://wger.de/api/v2/exerciseinfo/${e.id}`);
                     const exerciseInfo = res.data;
                     if(exerciseInfo.images.length > 0) {
-                        // console.log(exerciseInfo.category)
-                        // let muscles = exerciseInfo.muscles.map(m => ({id:m.id, name:m.name}));
                         exercises.push(new ExerciseModel(exerciseInfo.id, exerciseInfo.name, exerciseInfo.images[0].image, exerciseInfo.category.name));
                     }
                 }
@@ -70,23 +68,19 @@ function PlanPage({preferences, activeUser, onPlay}) {
                     {!activeUser && (<LoginRequiredModal show={showModal} onClose={() => setShowModal(false)}/>)}
                     {!activeUser && (<LockBodyScroll/>)}
                     
-                    <Row className="header justify-content-between">
-                        <Col>
-                            <h2 className="bold-text m-auto">Your Workout Plan</h2>
-                        </Col>
-                        <Col className="col-auto">
-                            {activeUser &&
-                                (<Link 
-                                    to="/player"
-                                    id="red-btn"
-                                    onClick={() => onPlay({level: preferences.level, exercises: workoutPlan})}>
-                                    Let's Workout
-                                </Link>)}
-                        </Col>
-                    </Row>
+                    <div className="header">
+                        <h2 className="bold-text my-3">Your Workout Plan</h2>
+                        {activeUser &&
+                            (<Link 
+                                to="/player"
+                                id="red-btn"
+                                onClick={() => onPlay({level: preferences.level, exercises: workoutPlan})}>
+                                Let's Workout
+                            </Link>)}
+                    </div>
                     <Row>
                         {workoutPlan.map((exercise, index) => 
-                            <Col key={index} lg={4} md={6} className="mt-4">
+                            <Col key={index} lg={4} md={6} className="my-3">
                                 <ExerciseCard exercise={exercise} blured={activeUser === null}/>
                             </Col>
                         )}

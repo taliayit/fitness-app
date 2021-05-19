@@ -9,3 +9,21 @@
     align-items: center;
     height: calc(100vh - 60px);
 }
+
+.p-plan-page .header {
+    position: relative;
+}
+
+.p-plan-page .header > a {
+    padding: 8px 15px;
+    position: absolute;
+    right: 8px;
+    top: 0;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .p-plan-page .header > a {
+        position: inherit;
+    }
+}

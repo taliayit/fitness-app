@@ -15,21 +15,36 @@
   cursor: pointer;
 }
 
+button[id*="-btn"]:focus {
+  border-color: #fa7470;
+}
+
+button[id*="-btn"], a[id*="-btn"] {
+  padding: 10px 15px;
+  border-radius: 3px;
+  font-size: 20px;
+  margin: 15px 0;
+  width: max-content;
+  border: 1px solid #fa7470;
+}
+
+#white-btn {
+  background-color: #fff;
+  color: #fa7470;
+}
+
 #red-btn {
   background-color: #fa7470;
   color: #fff;
-  padding: 10px 15px;
-  border-radius: 3px;
-  border: none;
-  font-size: 1.25rem;
-  margin: 15px 0;
-  width: max-content;
 }
 
+#disable-btn,
+#white-btn:hover,
 #red-btn:hover {
   text-decoration: none;
   background-color: #df6763;
   color: #fff;
+  border: 1px solid #df6763;
 }
 
 .bold-text {

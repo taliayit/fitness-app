@@ -46,12 +46,12 @@ function WorkoutsPage({activeUser}) {
 
     return (
         <div className="p-workouts">
-            <h2 className="bold-text m-auto">My Workouts</h2>
+            <h2 className="bold-text my-3">My Workouts</h2>
             {workouts ? 
                 <Container>                
                     <Row>
                         {workouts.map((workout, index) => 
-                            <Col key={index} lg={4} md={6} className="mt-4">
+                            <Col key={index} lg={4} md={6} className="my-3">
                                 <WorkoutCard workout={workout} onDelete={onDelete}/>
                             </Col>
                         )}
@@ -61,7 +61,6 @@ function WorkoutsPage({activeUser}) {
 
             <Modal id="confirm-modal" show={showConfirm} onHide={() => setShowConfirm(false)}>
                 <Modal.Title>Delete workout</Modal.Title>
-                {/* <h5>Delete workout</h5> */}
                 <Modal.Body>Are you sure?</Modal.Body>
                 <Modal.Footer className="justify-content-between border-0">
                     <Button id="white-btn" onClick={() => setShowConfirm(false)}>Cancel</Button>

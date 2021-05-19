@@ -24,3 +24,7 @@
 .btn-primary:focus {
     box-shadow: none !important;
 }
+
+.p-loginpage form button {
+    padding: 7px 15px;
+}

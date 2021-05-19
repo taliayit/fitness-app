@@ -17,8 +17,8 @@ function CountDownTimer({isPlaying, level, onExerciseComplete}) {
     function setTimes() {
         switch(level) {
             case 1: 
-                activeTime = 30;
-                restTime = 30;
+                activeTime = 1;
+                restTime = 1;
                 break;
             case 2: 
                 activeTime = 40;
@@ -34,10 +34,10 @@ function CountDownTimer({isPlaying, level, onExerciseComplete}) {
     
     const renderTime = ({ remainingTime }) => {      
         return (
-          <div className="timer">
-            <div className="value">{remainingTime}</div>
-            <div className="text">seconds</div>
-          </div>
+            <div className="timer">
+                <div className="value">{remainingTime}</div>
+                <div className="text">seconds</div>
+            </div>
         );
     };
     

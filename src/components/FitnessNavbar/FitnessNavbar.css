@@ -24,8 +24,10 @@
     }
 }
 
+.c-fitness-navbar .dropdown-item.active,
 .c-fitness-navbar .dropdown-item:hover {
-    background: none;
+    background-color: transparent;
+    color: inherit;
 }
 
 .navbar-light .navbar-nav .nav-link, .navbar .red-text:hover {
