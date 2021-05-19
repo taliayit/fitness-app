@@ -74,7 +74,7 @@ function PlanPage({preferences, activeUser, onPlay}) {
                             (<Link 
                                 to="/player"
                                 id="red-btn"
-                                onClick={() => onPlay({level: preferences.level, exercises: workoutPlan})}>
+                                onClick={() => onPlay({level: preferences.level, exercises: workoutPlan, isReplay:false})}>
                                 Let's Workout
                             </Link>)}
                     </div>

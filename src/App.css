@@ -15,8 +15,8 @@
   cursor: pointer;
 }
 
-button[id*="-btn"]:focus {
-  border-color: #fa7470;
+.btn-primary:focus, .btn-primary:disabled {
+  border-color: #fa7470 !important;
 }
 
 button[id*="-btn"], a[id*="-btn"] {

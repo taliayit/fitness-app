@@ -74,6 +74,7 @@ function PlayerPage({activeUser, planData}) {
                 onClose={() => setShowModal(false)}
                 level={planData.level}
                 time={planData.exercises.length}
+                isReplay={planData.isReplay}
                 onSave={saveWorkout}/>
         </div>
     );

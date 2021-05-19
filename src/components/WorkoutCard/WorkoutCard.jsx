@@ -53,7 +53,7 @@ function WorkoutCard({workout, onDelete, onPlay}) {
                     <div className="start-btn">
                         <Link 
                             to="/player"
-                            onClick={() => onPlay({level: workout.level, exercises: workout.exercises})}>
+                            onClick={() => onPlay({level: workout.level, exercises: workout.exercises, isReplay: true})}>
                             <img src={logo} alt="hand muscle"/>
                         </Link>
                         

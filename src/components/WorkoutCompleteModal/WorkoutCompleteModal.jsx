@@ -3,7 +3,7 @@ import { Button, Col, Modal, Row } from 'react-bootstrap';
 import medal from '../../assets/images/medal.png';
 import './WorkoutCompleteModal.css';
 
-function WorkoutCompleteModal({show, onClose, level, time, onSave}) {
+function WorkoutCompleteModal({show, onClose, level, time, onSave, isReplay}) {
     const timeFormatted = useMemo(() => {
         let hours = Math.floor(time/60);
         let fhours = '0' + hours;
@@ -47,7 +47,7 @@ function WorkoutCompleteModal({show, onClose, level, time, onSave}) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button id="red-btn" onClick={saveWorkout}>Save Workout</Button>
+                    <Button id="red-btn" onClick={saveWorkout} disabled={isReplay}>Save Workout</Button>
                 </Modal.Footer>
             </Modal>
         </div>
