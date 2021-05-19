@@ -59,12 +59,13 @@ function WorkoutsPage({activeUser}) {
                 </Container>
                 : <p className="no-data-msg">No saved workouts . . .</p>}
 
-            <Modal show={showConfirm} onHide={() => setShowConfirm(false)}>
+            <Modal id="confirm-modal" show={showConfirm} onHide={() => setShowConfirm(false)}>
+                <Modal.Title>Delete workout</Modal.Title>
+                {/* <h5>Delete workout</h5> */}
                 <Modal.Body>Are you sure?</Modal.Body>
                 <Modal.Footer className="justify-content-between border-0">
                     <Button id="white-btn" onClick={() => setShowConfirm(false)}>Cancel</Button>
                     <Button id="red-btn" onClick={deleteWorkout}>Yes</Button>
-                    
                 </Modal.Footer>
             </Modal>
         </div>

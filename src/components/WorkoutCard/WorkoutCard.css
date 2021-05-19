@@ -1,6 +1,6 @@
 .c-workout-card .card {
     padding: 0;
-    height: 300px;
+    height: 270px;
     box-shadow: 1px 1px 7px 2px #ccc;
 }
 
@@ -8,14 +8,19 @@
     font-weight: 600;
 }
 
-.c-workout-card .card .text-wrapper {
+.c-workout-card .card [class*="text-wrapper"] {
     display: flex;
     justify-content: space-between;
 }
 
-.c-workout-card .text-wrapper .card-text:first-child {
+.c-workout-card [class*="text-wrapper"] .card-text:first-child {
     font-weight: 600;
 }
+
+.c-workout-card [class*="text-wrapper"] .card-text:last-child {
+    text-align: right;
+}
+
 
 .c-workout-card .card .card-footer {
     display: flex;

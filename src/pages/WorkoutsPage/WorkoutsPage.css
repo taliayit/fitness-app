@@ -1,3 +1,21 @@
 .p-workouts .no-data-msg {
     margin-top: 40px;
 }
+
+#confirm-modal .modal-title{
+    padding: 1rem;
+}
+
+#confirm-modal .modal-body{
+    padding: 0 1rem;
+}
+
+#confirm-modal .modal-content {
+    padding: 0 10px;
+    width: 400px;
+}
+
+#confirm-modal .btn {
+    font-size: 18px;
+    padding: 8px 15px;
+}
