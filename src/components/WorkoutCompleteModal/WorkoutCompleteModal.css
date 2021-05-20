@@ -1,5 +1,9 @@
-#workout-complete-modal .modal-header,
 #workout-complete-modal .modal-footer {
+    border: none !important;
+    padding: 10px 20px;
+}
+
+#workout-complete-modal .modal-header {
     align-self: center;
     border: none !important;
 }
@@ -7,10 +11,30 @@
 #workout-complete-modal .modal-body {
     text-align: center;
 }
+
 #workout-complete-modal .modal-body > img {
     margin-bottom: 30px;
 }
 
 #workout-complete-modal .modal-content {
     width: 420px !important;
+}
+
+#workout-complete-modal .modal-footer button{
+    width: 100%;
+}
+
+#workout-complete-modal .name-input {
+    display: flex;
+    padding: 0 20px 20px 20px;
+}
+
+#workout-complete-modal .name-input > input {
+    width: 100%;
+}
+
+#workout-complete-modal .name-input > button {
+    font-size: 17px;
+    margin: 0 0 0 10px;
+    padding: 2px 5px;
 }

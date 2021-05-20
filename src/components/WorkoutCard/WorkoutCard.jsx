@@ -4,28 +4,16 @@ import logo from '../../assets/images/logo_black.png';
 import delete_icon from '../../assets/images/delete_icon.png';
 import './WorkoutCard.css';
 import { Link } from 'react-router-dom';
+import utils from '../../helpers/utils';
 
 function WorkoutCard({workout, onDelete, onPlay}) {
     let categories = [];
+    const time = utils.getFormatTime(workout.time);
+    const level = utils.getLevelString(workout.level);
+
     for(let e of workout.exercises) {
         if(!categories.includes(e.category))
             categories.push(e.category)
-    }
-    
-    function getFormatTime(time) {
-        let hours = Math.floor(time/60);
-        let fhours = '0' + hours;
-        let minutes = time % 60;
-        let fminutes = minutes.toString().length === 1 ?  '0' + minutes : minutes;
-        return fhours + ":" + fminutes;    
-    }
-
-    function getLevelString(level) {
-        switch(level) {
-            case 1: return "Beginner";
-            case 2: return "Intermediate";
-            case 3: return "Advanced";
-        }
     }
 
     return (
@@ -35,11 +23,11 @@ function WorkoutCard({workout, onDelete, onPlay}) {
                     <Card.Title className="red-text">{workout.name}</Card.Title>
                     <div className="level-text-wrapper">
                         <Card.Text>Level: </Card.Text>
-                        <Card.Text>{getLevelString(workout.level)}</Card.Text>
+                        <Card.Text>{level}</Card.Text>
                     </div>
                     <div className="time-text-wrapper">
                         <Card.Text>Time:</Card.Text>
-                        <Card.Text>{getFormatTime(workout.time)}</Card.Text>
+                        <Card.Text>{time}</Card.Text>
                     </div>
                     <div className="areas-text-wrapper">
                         <Card.Text>Areas:</Card.Text>
@@ -50,7 +38,7 @@ function WorkoutCard({workout, onDelete, onPlay}) {
                     <div className="delete-btn" onClick={()=>onDelete(workout)}>
                         <img src={delete_icon} alt="bin"/>
                     </div>
-                    <div className="start-btn">
+                    <div className="play-btn">
                         <Link 
                             to="/player"
                             onClick={() => onPlay({level: workout.level, exercises: workout.exercises, isReplay: true})}>

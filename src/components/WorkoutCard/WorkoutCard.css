@@ -32,11 +32,11 @@
     width: 30px;
 }
 
-.c-workout-card .card .start-btn img {
+.c-workout-card .card .play-btn img {
     width: 35px;
 }
 
-.c-workout-card .card .start-btn,
+.c-workout-card .card .play-btn,
 .c-workout-card .card .delete-btn {
     width: 100%;
     cursor: pointer;
@@ -47,7 +47,7 @@
     background-color: #bbb;
 }
 
-.c-workout-card .card .start-btn {
+.c-workout-card .card .play-btn {
     background-color: #fa7470;
 }
 
@@ -55,11 +55,11 @@
     background-color: #999;
 }
 
-.c-workout-card .card .start-btn:hover {
+.c-workout-card .card .play-btn:hover {
     background-color: #df6763;
 }
 
-.c-workout-card .card .start-btn > a {
+.c-workout-card .card .play-btn > a {
     display: block;
     padding: 10px;
 }

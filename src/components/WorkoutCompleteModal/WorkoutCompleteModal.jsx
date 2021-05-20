@@ -1,20 +1,20 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import medal from '../../assets/images/medal.png';
 import './WorkoutCompleteModal.css';
+import { AiOutlineCheck } from 'react-icons/ai'
+import utils from '../../helpers/utils';
 
 function WorkoutCompleteModal({show, onClose, level, time, onSave, isReplay}) {
-    const timeFormatted = useMemo(() => {
-        let hours = Math.floor(time/60);
-        let fhours = '0' + hours;
-        let minutes = time % 60;
-        let fminutes = minutes.toString().length === 1 ?  '0' + minutes : minutes;
-        return fhours + ":" + fminutes;    
-    });
+    const [showNameInput, setShowNameInput] = useState(false)
+    const [name, setName] = useState("")
+    const timeFormatted = useMemo(() => utils.getFormatTime(time));
 
     function saveWorkout() {
-        onSave("name");
-        onClose();
+        if(name != "") {
+            onSave(name);
+            onClose();
+        }
     }
 
     return (
@@ -47,9 +47,16 @@ function WorkoutCompleteModal({show, onClose, level, time, onSave, isReplay}) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button id="red-btn" onClick={saveWorkout} disabled={isReplay}>Save Workout</Button>
+                    <Button id="red-btn" onClick={() => setShowNameInput(true)} disabled={isReplay} block>Save Workout</Button>
                 </Modal.Footer>
+                
+                {showNameInput && (<div className="name-input">
+                    <input type="text" name="name" onChange={(e) => setName(e.target.value)} placeholder="Enter workout name..."/>
+                    <Button id="white-btn" onClick={saveWorkout}><AiOutlineCheck/></Button>
+                </div>)}
+
             </Modal>
+
         </div>
     );
 }
