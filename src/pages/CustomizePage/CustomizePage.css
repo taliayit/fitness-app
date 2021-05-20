@@ -51,6 +51,9 @@
         align-items: center;
         height: fit-content;
     }
+    .p-customize .muscle-selector-wrapper {
+        left: 100px;
+    }
 }
 
 .p-customize #red-btn {

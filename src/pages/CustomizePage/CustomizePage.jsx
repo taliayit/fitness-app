@@ -50,16 +50,20 @@ function CustomizePage({activeUser, onSubmit}) {
                         </div>
                         
                         {smallDevice && 
-                        <div className="muscle-selector-wrapper">
-                            <MusclesSelector onMusclesSelected={setMuscles}/>
-                        </div>}
+                            <div className="muscle-selector-wrapper">
+                                <MusclesSelector onMusclesSelected={setMuscles}/>
+                            </div>}
                         
-                        {errorMessage && (<div className="error-wrapper"><span className="error-icon">!</span><p className="error-msg"> {errorMessage} </p></div>)}
+                        <div className="error-wrapper" style={{visibility:errorMessage==="" ? "hidden":"visible"}}>
+                            <span className="error-icon">!</span>
+                            <p className="error-msg"> {errorMessage} </p>
+                        </div>
 
                         <Link 
                             to="/plan"
                             id="red-btn"
-                            onClick={isValid ? () => onSubmit({level: level, time: time, muscles: muscles})
+                            onClick={isValid ? 
+                                () => onSubmit({level: level, time: time, muscles: muscles})
                                 : e => handleInvalidSubmit(e)}>
                             Let's Start
                         </Link>
