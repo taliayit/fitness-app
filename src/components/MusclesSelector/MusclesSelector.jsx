@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { useState } from "react";
 import ImageMapper from 'react-image-mapper';
 import bodyImg from '../../assets/images/body_sm.png';
+import { useMediaQuery } from 'react-responsive'
 import './MusclesSelector.css'
 
 function MusclesSelector({onMusclesSelected}) {
     const images = require.context('../../assets/images/muscles', true);
     const [selectedMuscles, setSelectedMuscles] = useState([]);
     const [hoveredArea, setHoveredArea] = useState("");
+    const smallDevice = useMediaQuery({ maxWidth: 768 })
 
     useEffect(() => {
         onMusclesSelected(selectedMuscles)
@@ -99,7 +101,8 @@ function MusclesSelector({onMusclesSelected}) {
                 {selectedMuscles.includes("13") ? <img id="area-13" src={images('./13.png').default} alt="muscle"/> : null}
                 {selectedMuscles.includes("14") ? <img id="area-14" src={images('./14.png').default} alt="muscle"/> : null}
 
-                {hoveredArea ? <img id="area-hovered" src={hoveredArea} alt="muscle"/> : null}
+                {(hoveredArea && !smallDevice) &&
+                    <img id="area-hovered" src={hoveredArea} alt="muscle"/>}
 
             </div>
         </>
