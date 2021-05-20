@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-function CountDownTimer({isPlaying, level, onExerciseComplete}) {
+function CountDownTimer({isPlaying, level, onExerciseComplete, next, nextOff}) {
     const [isRestTime, setIsRestTime] = useState(true);
-    const [duration, setDuration] = useState(3);
+    const [duration, setDuration] = useState(0);
     const [key, setKey] = useState(0);
 
     let activeTime;
     let restTime;
 
     setTimes();
-    // useEffect(() => {
-    //     setTimes();
-    // }, []);
+
+    useEffect(() => {
+        if(next){
+            setDuration(activeTime);
+            setIsRestTime(false);
+            setKey(prevKey => prevKey + 1);
+            onExerciseComplete(false, true);
+            nextOff();
+        }
+    }, [next]);
 
     function setTimes() {
         switch(level) {
@@ -40,7 +47,15 @@ function CountDownTimer({isPlaying, level, onExerciseComplete}) {
             </div>
         );
     };
-    
+
+    function handleComplete(isNext) {
+        setDuration(isRestTime ? activeTime : restTime);
+        setIsRestTime(!isRestTime);
+        setKey(prevKey => prevKey + 1);
+        if(key !== 0)
+            onExerciseComplete(isRestTime, isNext);
+    }
+
     return (
         <div>
             <CountdownCircleTimer
@@ -51,14 +66,9 @@ function CountDownTimer({isPlaying, level, onExerciseComplete}) {
                 strokeWidth={7}
                 colors={[["#ff8e8a", 0.33], ["#fa7470", 0.33], ["#df6763"]]}
                 onComplete={() => {
-                    setDuration(isRestTime ? activeTime : restTime);
-                    setIsRestTime(!isRestTime);
-                    setKey(prevKey => prevKey + 1);
-                    if(key !== 0)
-                        onExerciseComplete(isRestTime);
+                    handleComplete(false);
                     return [true, 1000]}
-                }
-                >
+                }>
                 {renderTime}
             </CountdownCircleTimer>
 

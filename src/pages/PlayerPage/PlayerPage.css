@@ -27,6 +27,11 @@
     cursor: pointer;
 }
 
+.p-player-page .player-buttons > svg.icon-disabled {
+    color: #777;
+    cursor: unset;
+}
+
 .p-player-page .exercise-image-wrapper {
     display: flex;
     flex-direction: column;

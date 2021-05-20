@@ -11,6 +11,7 @@ function PlayerPage({activeUser, planData}) {
     const [curruntIndex, setCurruntIndex] = useState(0);
     const [currentImage, setCurrentImage] = useState("");
     const [showModal, setShowModal] = useState(false);
+    const [next, setNext] = useState(false);
 
     useEffect(() => {
         if (planData) {
@@ -22,11 +23,11 @@ function PlayerPage({activeUser, planData}) {
         return <Redirect to="/"/>
     }
 
-    function handleExerciseComplete(isRestTime) {
+    function handleExerciseComplete(isRestTime, isNext) {
         if(curruntIndex + 1 < planData.exercises.length) {
             setCurruntIndex(curruntIndex + 1);
-            if(isRestTime)
-                setCurrentImage(planData.exercises[curruntIndex].image);
+            if(isRestTime || isNext)
+                setCurrentImage(planData.exercises[curruntIndex+1].image);
             else
                 setCurrentImage(rest_animation);
         }
@@ -37,6 +38,7 @@ function PlayerPage({activeUser, planData}) {
     }
     
     function handleForward() {
+        setNext(true);
     }
 
     async function saveWorkout(name) {
@@ -57,15 +59,21 @@ function PlayerPage({activeUser, planData}) {
                     <span className="bold-text">Next: </span>
                     <span>{(curruntIndex + 1 < planData.exercises.length) ? planData.exercises[curruntIndex+1].name : 'Workout Complete!'}</span>
                     <div className="player-buttons">
-                        <FaPlay onClick={() => setIsPlaying(true)}/>
-                        <FaPause onClick={() => setIsPlaying(false)}/>
-                        <FaForward onClick={() => handleForward()}/>
+                        {isPlaying ? <FaPause onClick={() => setIsPlaying(false)}/>
+                        : <FaPlay onClick={() => setIsPlaying(true)}/>}
+                        {(currentImage === rest_animation) ? 
+                            <FaForward className="icon-disabled"/> 
+                            : <FaForward onClick={() => handleForward()}/>
+                        }
+
                     </div>
                 </div>
                 <div className="timer-wrapper">
                     <CountDownTimer
                         isPlaying={isPlaying}
                         level={planData.level}
+                        next={next}
+                        nextOff={() => setNext(false)}
                         onExerciseComplete={handleExerciseComplete}>     
                     </CountDownTimer>
                 </div>
