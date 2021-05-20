@@ -1,12 +1,8 @@
 [id^="area-"] {
     position: absolute;
+    top: 0;
     left: 0;
     width: 600px;
-    /* z-index: 2; */
-}
-
-.c-muscle-selector > div {
-    position: absolute !important;
 }
 
 .c-muscle-selector > div > img {

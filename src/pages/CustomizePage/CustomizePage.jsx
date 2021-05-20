@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo_black from '../../assets/images/logo_black.png';
 import logo_red from '../../assets/images/logo_red.png';
 import MusclesSelector from '../../components/MusclesSelector/MusclesSelector';
 import TimePicker from '../../components/TimePicker/TimePicker';
+import { useMediaQuery } from 'react-responsive'
 import './CustomizePage.css';
 
 function CustomizePage({activeUser, onSubmit}) {
     const [level, setLevel] = useState(0);
     const [time, setTime] = useState(0);
     const [muscles, setMuscles] = useState([]);
-    const [isValidToSubmit, setIsValidToSubmit] = useState(false);
+    const [isValid, setIsValid] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const smallDevice = useMediaQuery({ maxWidth: 768 })
 
     useEffect(() => {
-        setIsValidToSubmit(level !== "0" && time > 0 && muscles.length > 0);
+        setIsValid(level !== "0" && time > 0 && muscles.length > 0);
     }, [level, time, muscles])
 
     function handleInvalidSubmit(e) {
@@ -36,9 +38,9 @@ function CustomizePage({activeUser, onSubmit}) {
                             <img className="logo-lg" src={level === 3 ? logo_red : logo_black} onClick={() => setLevel(3)} alt="muscle"/>
                         </div>
 
-                        <h4 className="bold-text">Time<span className="time-format">(HH : mm)</span></h4>
                         
                         <div className="time-wrapper">
+                            <h4 className="bold-text">Time<span className="time-format">(HH : mm)</span></h4>
                             <TimePicker onTimePicked={setTime}/>
                         </div>
 
@@ -47,26 +49,28 @@ function CustomizePage({activeUser, onSubmit}) {
                             <p>Select body areas</p>
                         </div>
                         
+                        {smallDevice && 
+                        <div className="muscle-selector-wrapper">
+                            <MusclesSelector onMusclesSelected={setMuscles}/>
+                        </div>}
+                        
                         {errorMessage && (<div className="error-wrapper"><span className="error-icon">!</span><p className="error-msg"> {errorMessage} </p></div>)}
 
-                        {isValidToSubmit ? <Link 
+                        <Link 
                             to="/plan"
                             id="red-btn"
-                            onClick={() => onSubmit({level: level, time: time, muscles: muscles})}>
+                            onClick={isValid ? () => onSubmit({level: level, time: time, muscles: muscles})
+                                : e => handleInvalidSubmit(e)}>
                             Let's Start
                         </Link>
-                        : <Link 
-                            to="/plan"
-                            id="red-btn"
-                            onClick={e => handleInvalidSubmit(e)}>
-                            Let's Start
-                        </Link>}
+                    </Col>
 
-                    </Col>
-                    <Col className="p-0" md={7}>
-                        <MusclesSelector onMusclesSelected={setMuscles}/>
-                    </Col>
+                    {!smallDevice && 
+                        <Col className="p-0" md={7}>
+                            <MusclesSelector onMusclesSelected={setMuscles}/>
+                        </Col>}
                 </Row>
+
             </Container>
         </div>
     );
