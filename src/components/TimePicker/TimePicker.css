@@ -1,12 +1,16 @@
-input[type=number] {
+.c-time-picker > input[type=number] {
     -moz-appearance: textfield;
     padding: 5px;
     width: 50px;
     text-align: center;
 }
   
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.c-time-picker input::-webkit-outer-spin-button,
+.c-time-picker input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.c-time-picker > span {
+    margin: 0 1px;
 }

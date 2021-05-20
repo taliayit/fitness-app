@@ -38,11 +38,11 @@ function TimePicker({onTimePicked}) {
     }
 
     return (
-        <>
+        <div className="c-time-picker">
             <input id="ltime" type="number" value={ltime} onChange={onLtimeChange} min={0} max={9}/>
             <span> : </span>
             <input id="rtime" type="number" value={rtime} onChange={onRtimeChange} min={0} max={59}/>
-        </>
+        </div>
     );
 }
 
