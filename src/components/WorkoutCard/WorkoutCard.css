@@ -4,20 +4,42 @@
     box-shadow: 1px 1px 7px 2px #ccc;
 }
 
-.c-workout-card .card .card-title {
+.c-workout-card .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.c-workout-card .card-body::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("../../assets/images/logo_black.png") no-repeat center center;
+    background-size: contain;
+    opacity: 0.07;
+}
+
+.c-workout-card .card-body .card-title {
     font-weight: 600;
 }
 
-.c-workout-card .card [class*="text-wrapper"] {
+.c-workout-card .card-body .card-text {
+    font-size: 17px;
+}
+
+.c-workout-card .card div[class*="text-wrapper"] {
     display: flex;
     justify-content: space-between;
 }
 
-.c-workout-card [class*="text-wrapper"] .card-text:first-child {
+.c-workout-card div[class*="text-wrapper"] .card-text:first-child {
     font-weight: 600;
 }
 
-.c-workout-card [class*="text-wrapper"] .card-text:last-child {
+.c-workout-card div[class*="text-wrapper"] .card-text:last-child {
     text-align: right;
 }
 
@@ -36,30 +58,30 @@
     width: 35px;
 }
 
-.c-workout-card .card .play-btn,
-.c-workout-card .card .delete-btn {
+.c-workout-card .card-footer > .play-btn,
+.c-workout-card .card-footer > .delete-btn {
     width: 100%;
     cursor: pointer;
 }
 
-.c-workout-card .card .delete-btn {
+.c-workout-card .card-footer > .delete-btn {
     padding: 10px;
     background-color: #bbb;
 }
 
-.c-workout-card .card .play-btn {
+.c-workout-card .card-footer > .play-btn {
     background-color: #fa7470;
 }
 
-.c-workout-card .card .delete-btn:hover {
+.c-workout-card .card-footer > .delete-btn:hover {
     background-color: #999;
 }
 
-.c-workout-card .card .play-btn:hover {
+.c-workout-card .card-footer > .play-btn:hover {
     background-color: #df6763;
 }
 
-.c-workout-card .card .play-btn > a {
+.c-workout-card .card-footer > .play-btn > a {
     display: block;
     padding: 10px;
 }
