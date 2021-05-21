@@ -89,3 +89,15 @@ button[id*="-btn"], a[id*="-btn"] {
 .modal-dialog .modal-content {
   font-family: 'Montserrat', sans-serif;
 }
+
+.loader-wrapper > img{
+  width: 300px;
+}
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+}

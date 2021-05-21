@@ -113,23 +113,26 @@ function LoginPage({activeUser, onLogin}) {
                                     />
                                 </Form.Group>
 
-                                {signupMode ? <Form.Group size="lg" controlId="password2">
+                                {signupMode && <Form.Group size="lg" controlId="password2">
                                     <Form.Control
                                         type="password"
                                         value={password2}
                                         placeholder="Confirm Password"
                                         onChange={(e) => setPassword2(e.target.value)}
                                     />
-                                </Form.Group> :null}
+                                </Form.Group>}
 
-                                {errorMessage && (<div className="error-wrapper"><span className="error-icon">!</span><p className="error-msg"> {errorMessage} </p></div>)}
+                                {errorMessage && (<div className="error-wrapper">
+                                    <span className="error-icon">!</span>
+                                    <p className="error-msg"> {errorMessage} </p>
+                                </div>)}
 
-                                {!signupMode ? <Form.Group controlId="rememberMeCheckbox">
+                                {!signupMode && <Form.Group controlId="rememberMeCheckbox">
                                     <Form.Check type="checkbox" label="Keep me signed in"/>
-                                </Form.Group> : null}
+                                </Form.Group>}
 
                                 <Button id="red-btn" block type="submit">
-                                Sign {signupMode ? "up" : "in"}
+                                    Sign {signupMode ? "up" : "in"}
                                 </Button>
                             </Form>
                             

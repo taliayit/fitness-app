@@ -48,12 +48,12 @@ function CountDownTimer({isPlaying, level, onExerciseComplete, next, nextOff}) {
         );
     };
 
-    function handleComplete(isNext) {
+    function handleComplete() {
         setDuration(isRestTime ? activeTime : restTime);
         setIsRestTime(!isRestTime);
         setKey(prevKey => prevKey + 1);
         if(key !== 0)
-            onExerciseComplete(isRestTime, isNext);
+            onExerciseComplete(isRestTime, false);
     }
 
     return (
@@ -66,7 +66,7 @@ function CountDownTimer({isPlaying, level, onExerciseComplete, next, nextOff}) {
                 strokeWidth={7}
                 colors={[["#ff8e8a", 0.33], ["#fa7470", 0.33], ["#df6763"]]}
                 onComplete={() => {
-                    handleComplete(false);
+                    handleComplete();
                     return [true, 1000]}
                 }>
                 {renderTime}

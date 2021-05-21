@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import medal from '../../assets/images/medal.png';
 import './WorkoutCompleteModal.css';

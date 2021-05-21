@@ -5,11 +5,11 @@
     margin: 7px;
 }
 
-.c-exercise-card .card .card-img-top {
+.c-exercise-card .card > .card-img-top {
     height: 300px;
     object-fit: contain;
 }
 
-.c-exercise-card .card .card-title {
-    font-weight: 600 !important;
+.c-exercise-card .card-body > .card-title {
+    font-weight: 600;
 }

@@ -7,9 +7,6 @@
 }
 
 .p-player-page .player-dashboard {
-    /* position: fixed;
-    left: 0;
-    bottom: 0; */
     width: 100%;
     background-color: #eee;
     display: flex;
