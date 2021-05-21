@@ -85,3 +85,7 @@ button[id*="-btn"], a[id*="-btn"] {
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
 }
+
+.modal-dialog .modal-content {
+  font-family: 'Montserrat', sans-serif;
+}
