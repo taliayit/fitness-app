@@ -38,10 +38,12 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    padding: 20px;
 }
 
 .p-player-page .exercise-image-wrapper > img {
-    width: 300px;
+    max-width: 300px;
+    max-height: calc(100vh - 280px);
 }
 
 .p-player-page {
