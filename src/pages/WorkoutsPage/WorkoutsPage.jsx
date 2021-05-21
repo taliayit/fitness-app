@@ -62,7 +62,8 @@ function WorkoutsPage({activeUser, onPlay}) {
                     <p className="bold-text">Pumping. . .</p>
                 </div>}
 
-            {workouts && <p className="no-data-msg">No saved workouts . . .</p>}
+            {(workouts && workouts.length===0) && 
+                <p className="no-data-msg">No saved workouts . . .</p>}
             
             <Modal id="confirm-modal" show={showConfirm} onHide={() => setShowConfirm(false)}>
                 <Modal.Title>Delete workout</Modal.Title>
