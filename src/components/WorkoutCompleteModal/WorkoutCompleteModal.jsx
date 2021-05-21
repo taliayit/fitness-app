@@ -31,15 +31,15 @@ function WorkoutCompleteModal({show, onClose, level, time, onSave, isReplay}) {
                 <Modal.Body>
                     <img src={medal} alt="medal"/>
                     <Row>
-                        <Col>
+                        <Col className="text-wrapper">
                             <h5>{time}/{time}</h5>
                             <div>Exercises</div>
                         </Col>
-                        <Col>
+                        <Col className="text-wrapper">
                             <h5>{level}</h5>
                             <div>Level</div>
                         </Col>
-                        <Col>
+                        <Col className="text-wrapper">
                             <h5>{timeFormatted}</h5>
                             <div>Duration</div>
                         </Col>

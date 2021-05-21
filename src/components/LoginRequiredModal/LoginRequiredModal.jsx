@@ -15,7 +15,6 @@ function LoginRequiredModal({show, onClose}) {
                     <h5>Ooops!</h5>
                     <div>You do not have access to view this content.</div>
                     <div>Please sign in.</div>
-
                 </Modal.Body>
                 <Modal.Footer className="justify-content-between border-0">
                     <Button id="white-btn" onClick={onClose}>No, Thanks</Button>

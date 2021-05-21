@@ -13,15 +13,15 @@ function FitnessNavbar({activeUser, onLogout}) {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="#/">Home</Nav.Link>
-                        {activeUser ? <NavDropdown title="Workouts" id="basic-nav-dropdown">
+                        {activeUser && <NavDropdown title="Workouts" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#customize">Customize Workout</NavDropdown.Item>
                             <NavDropdown.Item href="#workouts">My Workouts</NavDropdown.Item>
-                        </NavDropdown> : null}
+                        </NavDropdown>}
                     </Nav>
                     <Nav className="ml-auto">
-                        {!activeUser ? <Nav.Link href="#customize">Try it out</Nav.Link> : null}
-                        {!activeUser ? <Nav.Link href="#login"><span className="red-link">Sign in</span></Nav.Link> : null}
-                        {activeUser ? <Nav.Link href="#" onClick={onLogout}><span className="red-link">Sign out</span></Nav.Link> : null}
+                        {!activeUser && <Nav.Link href="#customize">Try it out</Nav.Link>}
+                        {!activeUser && <Nav.Link href="#login"><span className="red-link">Sign in</span></Nav.Link>}
+                        {activeUser && <Nav.Link href="#" onClick={onLogout}><span className="red-link">Sign out</span></Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

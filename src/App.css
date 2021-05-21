@@ -74,7 +74,7 @@ button[id*="-btn"], a[id*="-btn"] {
   height: 15px;
   text-align: center;
   border-radius: 50%;
-  margin: 3px 4px 0 0;
+  margin: 1px 4px 0 0;
   font-weight: bolder;
 }
 
