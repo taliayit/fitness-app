@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Button, Modal } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import WorkoutCard from '../../components/WorkoutCard/WorkoutCard';
+import fitness_loader from '../../assets/images/fitness_loader.gif';
 import './WorkoutsPage.css'
 
 function WorkoutsPage({activeUser, onPlay}) {
     const [workouts, setWorkouts] = useState(null);
     const [showConfirm, setShowConfirm] = useState(false);
     const [workoutToDelete, setWorkoutToDelete] = useState(null);
-
 
     useEffect(() => {
         async function fetchData() {
@@ -57,8 +57,13 @@ function WorkoutsPage({activeUser, onPlay}) {
                         )}
                     </Row>
                 </Container>
-                : <p className="no-data-msg">No saved workouts . . .</p>}
+                : <div className="loader-wrapper">
+                    <img src={fitness_loader} alt=""/>
+                    <p className="bold-text">Pumping. . .</p>
+                </div>}
 
+            {workouts && <p className="no-data-msg">No saved workouts . . .</p>}
+            
             <Modal id="confirm-modal" show={showConfirm} onHide={() => setShowConfirm(false)}>
                 <Modal.Title>Delete workout</Modal.Title>
                 <Modal.Body>Are you sure?</Modal.Body>
