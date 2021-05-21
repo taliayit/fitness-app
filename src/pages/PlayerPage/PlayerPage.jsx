@@ -19,7 +19,7 @@ function PlayerPage({activeUser, planData}) {
         }
     }, []);
     
-    if (!planData) {
+    if (!planData || !activeUser) {
         return <Redirect to="/"/>
     }
 
