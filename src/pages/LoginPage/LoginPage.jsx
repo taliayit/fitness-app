@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
@@ -12,6 +12,11 @@ function LoginPage({activeUser, onLogin}) {
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(()=>{
+        // unlock body scroller in case of hidden overflow
+        document.body.style.overflow = "auto";
+    }, []);
 
     if (activeUser) {
         return <Redirect to="/customize"/>
